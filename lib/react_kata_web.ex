@@ -40,29 +40,11 @@ defmodule ReactKataWeb do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
-        layouts: [html: ReactKataWeb.Layouts]
+        layouts: []
 
       import Plug.Conn
-      import ReactKataWeb.Gettext
 
       unquote(verified_routes())
-    end
-  end
-
-  def live_view do
-    quote do
-      use Phoenix.LiveView,
-        layout: {ReactKataWeb.Layouts, :app}
-
-      unquote(html_helpers())
-    end
-  end
-
-  def live_component do
-    quote do
-      use Phoenix.LiveComponent
-
-      unquote(html_helpers())
     end
   end
 
@@ -84,8 +66,7 @@ defmodule ReactKataWeb do
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components and translation
-      import ReactKataWeb.CoreComponents
-      import ReactKataWeb.Gettext
+      # import ReactKataWeb.CoreComponents
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
