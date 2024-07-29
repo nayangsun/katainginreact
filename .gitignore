@@ -1,24 +1,39 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# The directory Mix will write compiled artifacts to
+/_build/
 
-node_modules
-dist
-dist-ssr
-*.local
+# If you run "mix test --cover", coverage assets end up here
+/cover/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# The directory Mix downloads your dependencies sources to
+/deps/
+
+# Where 3rd-party dependencies like ExDoc output generated docs
+/doc/
+
+# Ignore .fetch files in case you like to edit your project deps locally
+/.fetch
+
+# If the VM crashes, it generates a dump, let's ignore it too
+erl_crash.dump
+
+# Also ignore archive artifacts (built via "mix archive.build")
+*.ez
+
+# Ignore package tarball (built via "mix hex.build")
+react_kata-*.tar
+
+# Ignore any temporary/cache data
+/tmp/
+
+# Generated assets
+/priv/static/
+
+# Client
+/client/node_modules/
+/client/npm-debug.log*
+/client/coverage/
+
+# Environment failes
+/.env
+/.env.*
+!/.env.template
