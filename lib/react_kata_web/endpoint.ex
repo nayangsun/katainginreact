@@ -28,8 +28,6 @@ defmodule ReactKataWeb.Endpoint do
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
-    socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
-    plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
     plug Phoenix.Ecto.CheckRepoStatus, otp_app: :react_kata
   end
@@ -50,4 +48,6 @@ defmodule ReactKataWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug ReactKataWeb.Router
+
+  plug CORSPlug, origin: ["http://localhost:3000"]
 end

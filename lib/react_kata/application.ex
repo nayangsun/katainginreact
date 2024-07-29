@@ -13,7 +13,6 @@ defmodule ReactKata.Application do
       {DNSCluster, query: Application.get_env(:react_kata, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: ReactKata.PubSub},
       # Start the Finch HTTP client for sending emails
-      {Finch, name: ReactKata.Finch},
       # Start a worker by calling: ReactKata.Worker.start_link(arg)
       # {ReactKata.Worker, arg},
       # Start to serve requests, typically the last entry

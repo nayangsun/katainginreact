@@ -1,5 +1,8 @@
 import Config
 
+# Only in tests, remove the complexity from the password hashing algorithm
+config :bcrypt_elixir, :log_rounds, 1
+
 # Configure your database
 #
 # The MIX_TEST_PARTITION environment variable can be used
@@ -20,18 +23,8 @@ config :react_kata, ReactKataWeb.Endpoint,
   secret_key_base: "wz3va3z8npGZ20arpnXaCnUte493tsk/vGJYrX+sPAIhbgVWABhaWQLKPmz+S+Dv",
   server: false
 
-# In test we don't send emails
-config :react_kata, ReactKata.Mailer, adapter: Swoosh.Adapters.Test
-
 # Disable swoosh api client as it is only required for production adapters
 config :swoosh, :api_client, false
 
 # Print only warnings and errors during test
 config :logger, level: :warning
-
-# Initialize plugs at runtime for faster test compilation
-config :phoenix, :plug_init_mode, :runtime
-
-# Enable helpful, but potentially expensive runtime checks
-config :phoenix_live_view,
-  enable_expensive_runtime_checks: true

@@ -1,23 +1,26 @@
 defmodule ReactKataWeb.Router do
   use ReactKataWeb, :router
 
+  import ReactKataWeb.UserAuth
+
   pipeline :browser do
-    plug :accepts, ["html"]
     plug :fetch_session
-    plug :fetch_live_flash
-    plug :put_root_layout, html: {ReactKataWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_current_user
   end
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
+    plug :fetch_current_user
   end
 
-  scope "/", ReactKataWeb do
-    pipe_through :browser
+  scope "/auth", ReactKataWeb do
+    pipe_through :api
 
-    get "/", PageController, :home
+    post "/log_in", AuthController, :create
+    delete "/log-out", AuthController, :delete
   end
 
   # Other scopes may use custom stacks.
