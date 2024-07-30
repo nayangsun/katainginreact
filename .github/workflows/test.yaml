@@ -63,8 +63,8 @@ jobs:
       - name: Load env from reading .tool-versions
         id: versions
         run: |
-          elixir=$(grep 'elixir' ${{inputs.tool_version}} | cut -d ' ' -f 2)
-          erlang=$(grep 'erlang' ${{inputs.tool_version}} | cut -d ' ' -f 2)
+          elixir=$(grep 'elixir' .tool-versions | cut -d ' ' -f 2)
+          erlang=$(grep 'erlang' .tool-versions | cut -d ' ' -f 2)
           echo "elixir=$elixir" >> $GITHUB_OUTPUT
           echo "otp=$erlang" >> $GITHUB_OUTPUT
 
