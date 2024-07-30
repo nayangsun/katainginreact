@@ -14,10 +14,16 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v4
 
+      - name: Load env from reading .tool-versions
+        id: versions
+        run: |
+          nodejs=$(grep 'nodejs' ${{inputs.tool_version}} | cut -d ' ' -f 2)
+          echo "nodejs=$nodejs" >> $GITHUB_OUTPUT
+
       - name: Install Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: ${{steps.versions.outputs.nodejs}}
 
       - name: Cache npm dependencies
         uses: actions/cache@v4
