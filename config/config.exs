@@ -9,7 +9,7 @@ import Config
 
 config :react_kata,
   ecto_repos: [ReactKata.Repo],
-  generators: [timestamp_type: :utc_datetime]
+  generators: [api_prefix: "/api/v1"]
 
 # Configures the endpoint
 config :react_kata, ReactKataWeb.Endpoint,
