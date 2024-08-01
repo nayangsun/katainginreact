@@ -15,6 +15,8 @@ defmodule ReactKataWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
+    plug :fetch_current_user
   end
 
   scope "/", ReactKataWeb do
@@ -23,10 +25,11 @@ defmodule ReactKataWeb.Router do
     get "/", PageController, :home
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", ReactKataWeb do
-  #   pipe_through :api
-  # end
+  scope "/api/v1", ReactKataWeb do
+    pipe_through :api
+
+    post "/users/log_in", UserSessionAPIController, :create
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:react_kata, :dev_routes) do
