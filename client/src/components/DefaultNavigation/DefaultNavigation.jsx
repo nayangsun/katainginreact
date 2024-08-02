@@ -1,10 +1,22 @@
 import { Routes, Route } from "react-router-dom";
+import { useAuth } from '../AuthProvider/useAuth';
 import Home from "../Home/Home";
+
+const PrivateRoute = ({ children }) => {
+  const { user } = useAuth();
+  return user ? children : <Navigate to="/login" />;
+};
 
 function DefaultNavigation() {
   return (
     <Routes>
-      <Route path="/*" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+
+      <Route path="/*" element={
+        <PrivateRoute>
+          <Home />
+        </PrivateRoute>
+      } />
     </Routes>
   );
 }

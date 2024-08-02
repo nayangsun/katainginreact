@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "../Home/Home";
+import DefaultNavigation from "../DefaultNavigation/DefaultNavigation";
 
 
 function Navigation() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/*" element={<DefaultNavigation />} />
     </Routes>
   );
 }
