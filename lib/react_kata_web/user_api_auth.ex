@@ -14,13 +14,13 @@ defmodule ReactKataWeb.UserAPIAuth do
   Authenticates the user by looking into the session
   and remember me token.
   """
-  def fetch_current_user(conn, _opts) do
+  def fetch_current_user_api(conn, _opts) do
     user_token = authorize_user_token(conn)
 
     user =
       user_token &&
         user_token
-        |> Base.url_decode64!()
+        |> Base.decode64!()
         |> Accounts.get_user_by_session_token()
 
     assign(conn, :current_user, user)
@@ -39,7 +39,7 @@ defmodule ReactKataWeb.UserAPIAuth do
   If you want to enforce the user email is confirmed before
   they use the application at all, here would be a good place.
   """
-  def require_authenticated_user(conn, _opts) do
+  def require_authenticated_user_api(conn, _opts) do
     if conn.assigns[:current_user] do
       conn
     else

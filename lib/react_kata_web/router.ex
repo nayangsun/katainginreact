@@ -2,6 +2,7 @@ defmodule ReactKataWeb.Router do
   use ReactKataWeb, :router
 
   import ReactKataWeb.UserAuth
+  import ReactKataWeb.UserAPIAuth
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -16,7 +17,7 @@ defmodule ReactKataWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
     plug :fetch_session
-    plug :fetch_current_user
+    plug :fetch_current_user_api
   end
 
   scope "/", ReactKataWeb do
@@ -29,6 +30,12 @@ defmodule ReactKataWeb.Router do
     pipe_through :api
 
     post "/users/log_in", UserSessionAPIController, :create
+  end
+
+  scope "/api/v1", ReactKataWeb do
+    pipe_through [:api, :require_authenticated_user_api]
+
+    get "/me", UserController, :show
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
