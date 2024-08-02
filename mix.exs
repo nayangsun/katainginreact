@@ -74,17 +74,13 @@ defmodule ReactKata.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
+      setup: ["deps.get", "ecto.setup", "client.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind react_kata", "esbuild react_kata"],
-      "assets.deploy": [
-        "tailwind react_kata --minify",
-        "esbuild react_kata --minify",
-        "phx.digest"
-      ]
+      test: ["ecto.create --quiet", "ecto.migrate", "test"],
+      "client.setup": ["cmd npm install --prefix client"],
+      "client.build": ["cmd npm run build --prefix client", "phx.digest"],
+      "format.all": ["format", "cmd npm run format --prefix client"]
     ]
   end
 end
