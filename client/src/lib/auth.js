@@ -1,8 +1,20 @@
-import axiosInstance from './axios';
+export function logout() {
+  return fetch("/api/users/log_out", { method: "DELETE" }).then((response) =>
+    response.json()
+  );
+}
 
-export const loginApi = async (credentials) => {
-  const response = await axiosInstance.post('/users/log_in', credentials);
-  localStorage.setItem('authToken', response.data.token);
-  return response.data;
-};
-
+export function login({ email, password }) {
+  return fetch("/api/users/log_in", {
+    method: "POST",
+    body: JSON.stringify({
+      user: { email: email, password: password },
+    }),
+    headers: { "Content-Type": "application/json" },
+  }).then((response) => {
+    const code = response.status;
+    return response.json().then((json) => {
+      return { code, json };
+    });
+  });
+}
