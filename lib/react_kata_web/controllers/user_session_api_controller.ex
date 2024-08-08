@@ -17,7 +17,7 @@ defmodule ReactKataWeb.UserSessionAPIController do
 
       render(conn, :login, user: user, token: token)
     else
-      {:error, :bad_request, "Invalid username or password."}
+      {:error, :unauthorized}
     end
   end
 end

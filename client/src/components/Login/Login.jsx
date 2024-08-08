@@ -1,17 +1,30 @@
-import {
-  Avatar,
-  Button,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  Link,
-  Grid,
-  Box,
-  Typography,
-  Container,
-} from "@mui/material";
+import { useState } from "react";
+import { Avatar, Link, Grid, Box, Typography, Container } from "@mui/material";
+import { useSnackbar } from "notistack";
+import LoginForm from "./LoginForm";
+import { login } from "../../lib/auth";
 
 function Login() {
+  const { enqueueSnackbar } = useSnackbar();
+
+  const [loading, setLoading] = useState(false);
+
+  function handleSubmit({ email, password }) {
+    setLoading(true);
+
+    login({ email, password }).then(({ status, response }) => {
+      setLoading(false);
+
+      if (status === "ok") {
+        enqueueSnackbar("Login successful", { variant: "success" });
+      } else if (status === "invalid") {
+        enqueueSnackbar("Invalid email or password", { variant: "error" });
+      } else {
+        enqueueSnackbar("An error occurred", { variant: "error" });
+      }
+    });
+  }
+
   return (
     <>
       <Container component="main" maxWidth="xs">
@@ -27,52 +40,20 @@ function Login() {
           <Typography component="h1" variant="h5">
             Log in to account
           </Typography>
-          <Box component="form" noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Keep me logged in"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Log In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="/users/reset_password" variant="body2">
-                  Forgot your password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="/users/register" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
+
+          <LoginForm onSubmit={handleSubmit} loading={loading} />
+          <Grid container>
+            <Grid item xs>
+              <Link href="/users/reset_password" variant="body2">
+                Forgot your password?
+              </Link>
             </Grid>
-          </Box>
+            <Grid item>
+              <Link href="/users/register" variant="body2">
+                {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
       </Container>
     </>

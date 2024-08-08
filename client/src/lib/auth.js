@@ -12,9 +12,13 @@ export function login({ email, password }) {
     }),
     headers: { "Content-Type": "application/json" },
   }).then((response) => {
-    const code = response.status;
-    return response.json().then((json) => {
-      return { code, json };
+    const status = response.ok
+      ? "ok"
+      : response.status === 401
+        ? "invalid"
+        : "error";
+    return response.json().then((data) => {
+      return { status, data };
     });
   });
 }
