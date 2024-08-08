@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import DefaultNavigation from "../DefaultNavigation/DefaultNavigation";
 
-
 function Navigation() {
   return (
     <Routes>

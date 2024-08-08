@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import useAuth from '../AuthProvider/useAuth';
+import useAuth from "../AuthProvider/useAuth";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
 
@@ -13,11 +13,14 @@ function DefaultNavigation() {
     <Routes>
       <Route path="/login" element={<Login />} />
 
-      <Route path="/*" element={
-        <PrivateRoute>
-          <Home />
-        </PrivateRoute>
-      } />
+      <Route
+        path="/*"
+        element={
+          <PrivateRoute>
+            <Home />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 }

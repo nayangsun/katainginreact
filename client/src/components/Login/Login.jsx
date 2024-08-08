@@ -9,7 +9,7 @@ import {
   Box,
   Typography,
   Container,
-} from '@mui/material';
+} from "@mui/material";
 
 function Login() {
   return (
@@ -18,13 +18,12 @@ function Login() {
         <Box
           sx={{
             marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          </Avatar>
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
           <Typography component="h1" variant="h5">
             Log in to account
           </Typography>
