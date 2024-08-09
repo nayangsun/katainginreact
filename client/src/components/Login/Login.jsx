@@ -27,33 +27,40 @@ function Login() {
 
   return (
     <>
-      <Container component="main" maxWidth="xs">
+      <Container
+        component="main"
+        sx={{
+          mx: "auto",
+          maxWidth: "1920px",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Box
           sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            mx: "auto",
+            width: "100%",
+            maxWidth: "384px",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
-          <Typography component="h1" variant="h5">
-            Log in to account
-          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Typography component="h1" variant="h6" sx={{ fontWeight: 'bold' }}>
+              Log in to account
+            </Typography>
+
+            <Typography variant="body2">
+              {"Don't have an account? "}
+              <Link href="/users/register" variant="body2" sx={{ fontWeight: 'bold', textDecoration: 'none' }}>
+                {"Sign up"}
+              </Link>
+              {" for an account now."}
+            </Typography>
+          </Box>
 
           <LoginForm onSubmit={handleSubmit} loading={loading} />
-          <Grid container>
-            <Grid item xs>
-              <Link href="/users/reset_password" variant="body2">
-                Forgot your password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="/users/register" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
         </Box>
       </Container>
     </>
