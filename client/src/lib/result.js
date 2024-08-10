@@ -1,5 +1,5 @@
-const { Observable, of } = require("rxjs");
-const { catchError, map, startWith } = require("rxjs/operators");
+import { Observable, of } from "rxjs";
+import { catchError, map, startWith } from "rxjs/operators";
 
 // Define Result type
 export class Result {

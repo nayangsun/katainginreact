@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Avatar, Link, Grid, Box, Typography, Container } from "@mui/material";
+import { Link, Box, Typography, Container } from "@mui/material";
 import { useSnackbar } from "notistack";
 import LoginForm from "./LoginForm";
 import { login } from "../../lib/auth";
@@ -12,7 +12,7 @@ function Login() {
   function handleSubmit({ email, password }) {
     setLoading(true);
 
-    login({ email, password }).then(({ status, response }) => {
+    login({ email, password }).then(({ status }) => {
       setLoading(false);
 
       if (status === "ok") {
