@@ -75,7 +75,11 @@ function LoginForm({ onSubmit, loading = false }) {
               alignItems: "center",
             }}
           >
-            <Link href="/users/reset_password" variant="body2" sx={{ fontWeight: 'bold', textDecoration: 'none' }}>
+            <Link
+              href="/users/reset_password"
+              variant="body2"
+              sx={{ fontWeight: "bold", textDecoration: "none" }}
+            >
               Forgot your password?
             </Link>
           </Grid>

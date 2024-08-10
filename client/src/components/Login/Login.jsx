@@ -46,14 +46,18 @@ function Login() {
             maxWidth: "384px",
           }}
         >
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Typography component="h1" variant="h6" sx={{ fontWeight: 'bold' }}>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <Typography component="h1" variant="h6" sx={{ fontWeight: "bold" }}>
               Log in to account
             </Typography>
 
             <Typography variant="body2">
               {"Don't have an account? "}
-              <Link href="/users/register" variant="body2" sx={{ fontWeight: 'bold', textDecoration: 'none' }}>
+              <Link
+                href="/users/register"
+                variant="body2"
+                sx={{ fontWeight: "bold", textDecoration: "none" }}
+              >
                 {"Sign up"}
               </Link>
               {" for an account now."}
