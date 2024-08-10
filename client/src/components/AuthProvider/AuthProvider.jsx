@@ -1,17 +1,10 @@
 import { AuthContext } from "./useAuth";
 import { useEffect, useState } from "react";
-import { loginApi } from "../../lib/auth";
-
-const fetchUserData = async () => {
-  const response = await axiosInstance.get("/me");
-  return response.data;
-};
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  const login = async (credentials) => {
-    // const data = await loginApi(credentials);
+  const login = async () => {
     setUser(null);
   };
 
@@ -23,7 +16,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (token) {
-      fetchUserData().then((userData) => setUser(userData));
+      // fetch user data
     }
   }, []);
 
