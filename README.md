@@ -1,18 +1,19 @@
 # ReactKata
 
-To start your Phoenix server:
+> Kata-ing React and Phoenix with JSON and APIs
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+## Design
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+client and a [open API](https://github.com/OAI/OpenAPI-Specification) server with a relational database.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+### Server
+
+### Database
+
+### Client
+
+## Getting started
 
 ## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+  * Official website(react): https://reactjs.org/
+  * Official website(phoenix): https://www.phoenixframework.org/
