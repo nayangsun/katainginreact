@@ -22,14 +22,6 @@ defmodule ReactKataWeb.FallbackController do
     |> render(:"404")
   end
 
-  # This clause handles authentication errors.
-  def call(conn, {:error, :unauthorized}) do
-    conn
-    |> put_status(:unauthorized)
-    |> put_view(html: ReactKataWeb.ErrorHTML, json: ReactKataWeb.ErrorJSON)
-    |> render(:"401")
-  end
-
   # This clause handles any user submission problems.
   def call(conn, {:error, :bad_request, error}) do
     conn
