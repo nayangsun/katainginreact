@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { formatSentence } from "../../lib/utils";
 import { Link, Box, Typography, Container } from "@mui/material";
 import { useSnackbar } from "notistack";
 import LoginForm from "./LoginForm";
@@ -6,21 +8,20 @@ import { login } from "../../lib/auth";
 
 function Login() {
   const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
 
   function handleSubmit({ email, password }) {
     setLoading(true);
 
-    login({ email, password }).then(({ status }) => {
+    login({ email, password }).then(({ status, data }) => {
       setLoading(false);
 
       if (status === "ok") {
-        enqueueSnackbar("Login successful", { variant: "success" });
-      } else if (status === "invalid") {
-        enqueueSnackbar("Invalid email or password", { variant: "error" });
+        navigate("/");
       } else {
-        enqueueSnackbar("An error occurred", { variant: "error" });
+        enqueueSnackbar(formatSentence(data.message), { variant: "error" });
       }
     });
   }

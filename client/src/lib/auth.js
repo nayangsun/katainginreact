@@ -12,11 +12,7 @@ export function login({ email, password }) {
     }),
     headers: { "Content-Type": "application/json" },
   }).then((response) => {
-    const status = response.ok
-      ? "ok"
-      : response.status === 401
-        ? "invalid"
-        : "error";
+    const status = response.ok ? "ok" : "error";
     return response.json().then((data) => {
       return { status, data };
     });

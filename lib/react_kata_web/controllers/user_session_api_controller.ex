@@ -14,7 +14,7 @@ defmodule ReactKataWeb.UserSessionAPIController do
       |> UserAPIAuth.log_in_user_api(user)
       |> render(:login, message: "Logged in successfully")
     else
-      {:error, :unauthorized}
+      {:error, :bad_request, "Invalid email or password"}
     end
   end
 end

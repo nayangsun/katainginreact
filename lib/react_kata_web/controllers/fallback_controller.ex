@@ -23,10 +23,10 @@ defmodule ReactKataWeb.FallbackController do
   end
 
   # This clause handles any user submission problems.
-  def call(conn, {:error, :bad_request, error}) do
+  def call(conn, {:error, :bad_request, message}) do
     conn
     |> put_status(:bad_request)
     |> put_view(html: ReactKataWeb.ErrorHTML, json: ReactKataWeb.ErrorJSON)
-    |> render(:"400", error: error)
+    |> render(:"400", message: message)
   end
 end
