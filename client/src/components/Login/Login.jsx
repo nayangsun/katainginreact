@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { formatSentence } from "../../lib/utils";
 import { Link, Box, Typography, Container } from "@mui/material";
