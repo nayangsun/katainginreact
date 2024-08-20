@@ -17,4 +17,10 @@ defmodule ReactKataWeb.UserSessionAPIController do
       {:error, :bad_request, "Invalid email or password"}
     end
   end
+
+  def delete(conn, _params) do
+    conn
+    |> UserAPIAuth.log_out_user_api()
+    |> json(%{status: :ok})
+  end
 end

@@ -1,13 +1,13 @@
 import { React } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter } from "react-router-dom";
 import { StyledEngineProvider } from "@mui/material/styles";
 import { SnackbarProvider } from "notistack";
 import { ConfirmProvider } from "material-ui-confirm";
+import { queryClient } from "./reactQuery";
 import CssBaseline from "@mui/material/CssBaseline";
 import Navigation from "../Navigation/Navigation";
-
-const queryClient = new QueryClient();
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
             </ConfirmProvider>
           </SnackbarProvider>
         </StyledEngineProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </BrowserRouter>
   );

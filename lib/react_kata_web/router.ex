@@ -30,6 +30,7 @@ defmodule ReactKataWeb.Router do
     pipe_through :api
 
     post "/users/log_in", UserSessionAPIController, :create
+    delete "/users/log_out", UserSessionAPIController, :delete
   end
 
   scope "/api/v1", ReactKataWeb do
