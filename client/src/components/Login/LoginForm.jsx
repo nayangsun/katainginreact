@@ -31,13 +31,13 @@ function LoginForm({ onSubmit, loading = false }) {
         }}
       >
         <TextField
-          margin="normal"
-          fullWidth
+          variant="outlined"
           label="Email"
-          name="email"
-          autoFocus
           value={email}
           onChange={(event) => setEmail(event.target.value)}
+          autoComplete="off"
+          margin="normal"
+          fullWidth
           InputProps={{
             style: {
               borderRadius: "12px",
@@ -45,12 +45,14 @@ function LoginForm({ onSubmit, loading = false }) {
           }}
         />
         <TextField
-          margin="normal"
-          fullWidth
+          variant="outlined"
           label="Password"
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
+          autoComplete="off"
+          margin="normal"
+          fullWidth
           InputProps={{
             style: {
               borderRadius: "12px",
