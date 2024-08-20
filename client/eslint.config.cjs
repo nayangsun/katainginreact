@@ -1,3 +1,4 @@
+const js = require("@eslint/js");
 const globals = require("globals");
 const reactPlugin = require("eslint-plugin-react");
 const reactHooksPlugin = require("eslint-plugin-react-hooks");
@@ -5,7 +6,7 @@ const reactRefreshPlugin = require("eslint-plugin-react-refresh");
 const jest = require('eslint-plugin-jest');
 
 module.exports = [
-  ...require("@eslint/js").configs.recommended,
+  js.configs.recommended,
   {
     files: ["**/*.js", "**/*.jsx"],
     languageOptions: {
