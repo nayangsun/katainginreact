@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useUser } from "../../hooks/useUser";
-import Home from "../Home/Home";
+import DefaultNavigation from "../DefaultNavigation/DefaultNavigation";
 import Login from "../Login/Login";
 
 function RequireAuthenticatedUser({ children }) {
@@ -14,7 +14,7 @@ function RedirectIfUserIsAuthenticated({ children }) {
   return user ? <Navigate to="/" replace /> : children;
 }
 
-export default function DefaultNavigation() {
+function Navigation() {
   return (
     <Routes>
       <Route
@@ -29,10 +29,12 @@ export default function DefaultNavigation() {
         path="/*"
         element={
           <RequireAuthenticatedUser>
-            <Home />
+            <DefaultNavigation />
           </RequireAuthenticatedUser>
         }
       />
     </Routes>
   );
 }
+
+export default Navigation;

@@ -4,7 +4,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { logout } from "../../lib/auth";
 import { QUERY_KEY } from "../../lib/query_key";
 
-export default function LogoutButton() {
+function LogoutButton() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
@@ -17,3 +17,5 @@ export default function LogoutButton() {
 
   return <button onClick={handleLogout}>log out</button>;
 }
+
+export default LogoutButton;
