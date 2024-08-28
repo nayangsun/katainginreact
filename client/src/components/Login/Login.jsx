@@ -31,48 +31,46 @@ function Login() {
   }
 
   return (
-    <>
-      <Container
-        component="main"
+    <Container
+      component="main"
+      sx={{
+        mx: "auto",
+        maxWidth: "1920px",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Box
         sx={{
           mx: "auto",
-          maxWidth: "1920px",
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
+          width: "100%",
+          maxWidth: "384px",
         }}
       >
-        <Box
-          sx={{
-            mx: "auto",
-            width: "100%",
-            maxWidth: "384px",
-          }}
-        >
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            <Typography component="h1" variant="h6" sx={{ fontWeight: "bold" }}>
-              Log in to account
-            </Typography>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <Typography component="h1" variant="h6" sx={{ fontWeight: "bold" }}>
+            Log in to account
+          </Typography>
 
-            <Typography variant="body2">
-              {"Don't have an account? "}
-              <Link
-                href="/users/register"
-                variant="body2"
-                sx={{ fontWeight: "bold", textDecoration: "none" }}
-              >
-                {"Sign up"}
-              </Link>
-              {" for an account now."}
-            </Typography>
-          </Box>
-
-          <LoginForm onSubmit={handleSubmit} loading={loading} />
+          <Typography variant="body2">
+            {"Don't have an account? "}
+            <Link
+              href="/users/register"
+              variant="body2"
+              sx={{ fontWeight: "bold", textDecoration: "none" }}
+            >
+              {"Sign up"}
+            </Link>
+            {" for an account now."}
+          </Typography>
         </Box>
-      </Container>
-    </>
+
+        <LoginForm onSubmit={handleSubmit} loading={loading} />
+      </Box>
+    </Container>
   );
 }
 
