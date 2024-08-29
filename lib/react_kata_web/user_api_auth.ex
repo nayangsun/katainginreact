@@ -1,16 +1,16 @@
-defmodule ReactKataWeb.UserAPIAuth do
-  use ReactKataWeb, :verified_routes
+defmodule KatainginreactWeb.UserAPIAuth do
+  use KatainginreactWeb, :verified_routes
 
   import Plug.Conn
   import Phoenix.Controller
 
-  alias ReactKata.Accounts
+  alias Katainginreact.Accounts
 
   # Make the remember me cookie valid for 60 days.
   # If you want bump or reduce this value, also change
   # the token expiry itself in UserToken.
   @max_age 60 * 60 * 24 * 1
-  @remember_me_cookie "_react_kata_web_user_remember_me"
+  @remember_me_cookie "_katainginreact_web_user_remember_me"
   @remember_me_options [sign: true, max_age: @max_age, same_site: "Lax"]
 
   @doc """
@@ -95,7 +95,7 @@ defmodule ReactKataWeb.UserAPIAuth do
     else
       conn
       |> put_status(401)
-      |> put_view(html: ReactKataWeb.ErrorHTML, json: ReactKataWeb.ErrorJSON)
+      |> put_view(html: KatainginreactWeb.ErrorHTML, json: KatainginreactWeb.ErrorJSON)
       |> render(:"401")
       |> halt()
     end

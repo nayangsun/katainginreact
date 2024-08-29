@@ -1,12 +1,12 @@
-defmodule ReactKataWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :react_kata
+defmodule KatainginreactWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :katainginreact
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_react_kata_key",
+    key: "_katainginreact_key",
     signing_salt: "bSA3bCoj",
     same_site: "Lax"
   ]
@@ -21,9 +21,9 @@ defmodule ReactKataWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :react_kata,
+    from: :katainginreact,
     gzip: false,
-    only: ReactKataWeb.static_paths()
+    only: KatainginreactWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -31,7 +31,7 @@ defmodule ReactKataWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :react_kata
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :katainginreact
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,
@@ -49,5 +49,5 @@ defmodule ReactKataWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug ReactKataWeb.Router
+  plug KatainginreactWeb.Router
 end

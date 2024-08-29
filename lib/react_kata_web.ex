@@ -1,12 +1,12 @@
-defmodule ReactKataWeb do
+defmodule KatainginreactWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, components, channels, and so on.
 
   This can be used in your application as:
 
-      use ReactKataWeb, :controller
-      use ReactKataWeb, :html
+      use KatainginreactWeb, :controller
+      use KatainginreactWeb, :html
 
   The definitions below will be executed for every controller,
   component, etc, so keep them short and clean, focused
@@ -40,10 +40,10 @@ defmodule ReactKataWeb do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
-        layouts: [html: ReactKataWeb.Layouts]
+        layouts: [html: KatainginreactWeb.Layouts]
 
       import Plug.Conn
-      import ReactKataWeb.Gettext
+      import KatainginreactWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -52,7 +52,7 @@ defmodule ReactKataWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {ReactKataWeb.Layouts, :app}
+        layout: {KatainginreactWeb.Layouts, :app}
 
       unquote(html_helpers())
     end
@@ -84,8 +84,8 @@ defmodule ReactKataWeb do
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components and translation
-      import ReactKataWeb.CoreComponents
-      import ReactKataWeb.Gettext
+      import KatainginreactWeb.CoreComponents
+      import KatainginreactWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
@@ -98,9 +98,9 @@ defmodule ReactKataWeb do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: ReactKataWeb.Endpoint,
-        router: ReactKataWeb.Router,
-        statics: ReactKataWeb.static_paths()
+        endpoint: KatainginreactWeb.Endpoint,
+        router: KatainginreactWeb.Router,
+        statics: KatainginreactWeb.static_paths()
     end
   end
 

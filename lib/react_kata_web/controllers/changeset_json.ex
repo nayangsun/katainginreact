@@ -1,4 +1,4 @@
-defmodule ReactKataWeb.ChangesetJSON do
+defmodule KatainginreactWeb.ChangesetJSON do
   @doc """
   Renders changeset errors.
   """
@@ -13,9 +13,9 @@ defmodule ReactKataWeb.ChangesetJSON do
     # uncommenting and adjusting the following code:
 
     # if count = opts[:count] do
-    #   Gettext.dngettext(ReactKataWeb.Gettext, "errors", msg, msg, count, opts)
+    #   Gettext.dngettext(KatainginreactWeb.Gettext, "errors", msg, msg, count, opts)
     # else
-    #   Gettext.dgettext(ReactKataWeb.Gettext, "errors", msg, opts)
+    #   Gettext.dgettext(KatainginreactWeb.Gettext, "errors", msg, opts)
     # end
 
     Enum.reduce(opts, msg, fn {key, value}, acc ->

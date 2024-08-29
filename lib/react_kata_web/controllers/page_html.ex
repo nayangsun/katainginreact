@@ -1,10 +1,10 @@
-defmodule ReactKataWeb.PageHTML do
+defmodule KatainginreactWeb.PageHTML do
   @moduledoc """
   This module contains pages rendered by PageController.
 
   See the `page_html` directory for all templates available.
   """
-  use ReactKataWeb, :html
+  use KatainginreactWeb, :html
 
   embed_templates "page_html/*"
 end

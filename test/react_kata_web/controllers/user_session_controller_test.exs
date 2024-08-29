@@ -1,7 +1,7 @@
-defmodule ReactKataWeb.UserSessionControllerTest do
-  use ReactKataWeb.ConnCase, async: true
+defmodule KatainginreactWeb.UserSessionControllerTest do
+  use KatainginreactWeb.ConnCase, async: true
 
-  import ReactKata.AccountsFixtures
+  import Katainginreact.AccountsFixtures
 
   setup do
     %{user: user_fixture()}
@@ -50,7 +50,7 @@ defmodule ReactKataWeb.UserSessionControllerTest do
           }
         })
 
-      assert conn.resp_cookies["_react_kata_web_user_remember_me"]
+      assert conn.resp_cookies["_katainginreact_web_user_remember_me"]
       assert redirected_to(conn) == ~p"/"
     end
 

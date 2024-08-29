@@ -1,3 +1,3 @@
-defmodule ReactKata.Mailer do
-  use Swoosh.Mailer, otp_app: :react_kata
+defmodule Katainginreact.Mailer do
+  use Swoosh.Mailer, otp_app: :katainginreact
 end

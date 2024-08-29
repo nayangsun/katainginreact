@@ -1,5 +1,5 @@
-defmodule ReactKataWeb.PageControllerTest do
-  use ReactKataWeb.ConnCase
+defmodule KatainginreactWeb.PageControllerTest do
+  use KatainginreactWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")

@@ -1,9 +1,9 @@
-defmodule ReactKataWeb.UserRegistrationController do
-  use ReactKataWeb, :controller
+defmodule KatainginreactWeb.UserRegistrationController do
+  use KatainginreactWeb, :controller
 
-  alias ReactKata.Accounts
-  alias ReactKata.Accounts.User
-  alias ReactKataWeb.UserAuth
+  alias Katainginreact.Accounts
+  alias Katainginreact.Accounts.User
+  alias KatainginreactWeb.UserAuth
 
   def new(conn, _params) do
     changeset = Accounts.change_user_registration(%User{})

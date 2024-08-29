@@ -1,5 +1,5 @@
-defmodule ReactKata.Repo do
+defmodule Katainginreact.Repo do
   use Ecto.Repo,
-    otp_app: :react_kata,
+    otp_app: :katainginreact,
     adapter: Ecto.Adapters.Postgres
 end

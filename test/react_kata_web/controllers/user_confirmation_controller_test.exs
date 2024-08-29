@@ -1,9 +1,9 @@
-defmodule ReactKataWeb.UserConfirmationControllerTest do
-  use ReactKataWeb.ConnCase, async: true
+defmodule KatainginreactWeb.UserConfirmationControllerTest do
+  use KatainginreactWeb.ConnCase, async: true
 
-  alias ReactKata.Accounts
-  alias ReactKata.Repo
-  import ReactKata.AccountsFixtures
+  alias Katainginreact.Accounts
+  alias Katainginreact.Repo
+  import Katainginreact.AccountsFixtures
 
   setup do
     %{user: user_fixture()}

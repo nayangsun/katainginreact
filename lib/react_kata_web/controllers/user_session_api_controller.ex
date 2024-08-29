@@ -1,10 +1,10 @@
-defmodule ReactKataWeb.UserSessionAPIController do
-  use ReactKataWeb, :controller
+defmodule KatainginreactWeb.UserSessionAPIController do
+  use KatainginreactWeb, :controller
 
-  alias ReactKata.Accounts
-  alias ReactKataWeb.UserAPIAuth
+  alias Katainginreact.Accounts
+  alias KatainginreactWeb.UserAPIAuth
 
-  action_fallback ReactKataWeb.FallbackController
+  action_fallback KatainginreactWeb.FallbackController
 
   def create(conn, %{"user" => user_params}) do
     %{"email" => email, "password" => password} = user_params

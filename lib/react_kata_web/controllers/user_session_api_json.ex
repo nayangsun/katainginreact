@@ -1,4 +1,4 @@
-defmodule ReactKataWeb.UserSessionAPIJSON do
+defmodule KatainginreactWeb.UserSessionAPIJSON do
   @doc """
   Renders a single user.
   """

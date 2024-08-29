@@ -1,8 +1,8 @@
-defmodule ReactKataWeb.UserSessionController do
-  use ReactKataWeb, :controller
+defmodule KatainginreactWeb.UserSessionController do
+  use KatainginreactWeb, :controller
 
-  alias ReactKata.Accounts
-  alias ReactKataWeb.UserAuth
+  alias Katainginreact.Accounts
+  alias KatainginreactWeb.UserAuth
 
   def new(conn, _params) do
     render(conn, :new, error_message: nil)

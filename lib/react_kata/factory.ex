@@ -1,6 +1,6 @@
-defmodule ReactKata.Factory do
+defmodule Katainginreact.Factory do
   def build(:user) do
-    %ReactKata.Accounts.User{
+    %Katainginreact.Accounts.User{
       email: "user#{System.unique_integer()}@example.com",
       hashed_password: Bcrypt.hash_pwd_salt("password")
     }
@@ -15,6 +15,6 @@ defmodule ReactKata.Factory do
   end
 
   def insert!(factory_name, attrs \\ []) do
-    factory_name |> build(attrs) |> ReactKata.Repo.insert!()
+    factory_name |> build(attrs) |> Katainginreact.Repo.insert!()
   end
 end

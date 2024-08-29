@@ -1,7 +1,7 @@
-defmodule ReactKataWeb.UserConfirmationController do
-  use ReactKataWeb, :controller
+defmodule KatainginreactWeb.UserConfirmationController do
+  use KatainginreactWeb, :controller
 
-  alias ReactKata.Accounts
+  alias Katainginreact.Accounts
 
   def new(conn, _params) do
     render(conn, :new)

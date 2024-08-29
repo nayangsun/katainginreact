@@ -1,16 +1,16 @@
-defmodule ReactKataWeb.UserAuth do
-  use ReactKataWeb, :verified_routes
+defmodule KatainginreactWeb.UserAuth do
+  use KatainginreactWeb, :verified_routes
 
   import Plug.Conn
   import Phoenix.Controller
 
-  alias ReactKata.Accounts
+  alias Katainginreact.Accounts
 
   # Make the remember me cookie valid for 60 days.
   # If you want bump or reduce this value, also change
   # the token expiry itself in UserToken.
   @max_age 60 * 60 * 24 * 60
-  @remember_me_cookie "_react_kata_web_user_remember_me"
+  @remember_me_cookie "_katainginreact_web_user_remember_me"
   @remember_me_options [sign: true, max_age: @max_age, same_site: "Lax"]
 
   @doc """
@@ -77,7 +77,7 @@ defmodule ReactKataWeb.UserAuth do
     user_token && Accounts.delete_user_session_token(user_token)
 
     if live_socket_id = get_session(conn, :live_socket_id) do
-      ReactKataWeb.Endpoint.broadcast(live_socket_id, "disconnect", %{})
+      KatainginreactWeb.Endpoint.broadcast(live_socket_id, "disconnect", %{})
     end
 
     conn
@@ -132,16 +132,16 @@ defmodule ReactKataWeb.UserAuth do
   Use the `on_mount` lifecycle macro in LiveViews to mount or authenticate
   the current_user:
 
-      defmodule ReactKataWeb.PageLive do
-        use ReactKataWeb, :live_view
+      defmodule KatainginreactWeb.PageLive do
+        use KatainginreactWeb, :live_view
 
-        on_mount {ReactKataWeb.UserAuth, :mount_current_user}
+        on_mount {KatainginreactWeb.UserAuth, :mount_current_user}
         ...
       end
 
   Or use the `live_session` of your router to invoke the on_mount callback:
 
-      live_session :authenticated, on_mount: [{ReactKataWeb.UserAuth, :ensure_authenticated}] do
+      live_session :authenticated, on_mount: [{KatainginreactWeb.UserAuth, :ensure_authenticated}] do
         live "/profile", ProfileLive, :index
       end
   """

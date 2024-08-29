@@ -1,7 +1,7 @@
-defmodule ReactKataWeb.UserResetPasswordController do
-  use ReactKataWeb, :controller
+defmodule KatainginreactWeb.UserResetPasswordController do
+  use KatainginreactWeb, :controller
 
-  alias ReactKata.Accounts
+  alias Katainginreact.Accounts
 
   plug :get_user_by_reset_password_token when action in [:edit, :update]
 

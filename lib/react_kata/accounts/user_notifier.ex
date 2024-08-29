@@ -1,14 +1,14 @@
-defmodule ReactKata.Accounts.UserNotifier do
+defmodule Katainginreact.Accounts.UserNotifier do
   import Swoosh.Email
 
-  alias ReactKata.Mailer
+  alias Katainginreact.Mailer
 
   # Delivers the email using the application mailer.
   defp deliver(recipient, subject, body) do
     email =
       new()
       |> to(recipient)
-      |> from({"ReactKata", "contact@example.com"})
+      |> from({"Katainginreact", "contact@example.com"})
       |> subject(subject)
       |> text_body(body)
 

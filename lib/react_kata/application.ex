@@ -1,4 +1,4 @@
-defmodule ReactKata.Application do
+defmodule Katainginreact.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -8,21 +8,21 @@ defmodule ReactKata.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      ReactKataWeb.Telemetry,
-      ReactKata.Repo,
-      {DNSCluster, query: Application.get_env(:react_kata, :dns_cluster_query) || :ignore},
-      {Phoenix.PubSub, name: ReactKata.PubSub},
+      KatainginreactWeb.Telemetry,
+      Katainginreact.Repo,
+      {DNSCluster, query: Application.get_env(:katainginreact, :dns_cluster_query) || :ignore},
+      {Phoenix.PubSub, name: Katainginreact.PubSub},
       # Start the Finch HTTP client for sending emails
-      {Finch, name: ReactKata.Finch},
-      # Start a worker by calling: ReactKata.Worker.start_link(arg)
-      # {ReactKata.Worker, arg},
+      {Finch, name: Katainginreact.Finch},
+      # Start a worker by calling: Katainginreact.Worker.start_link(arg)
+      # {Katainginreact.Worker, arg},
       # Start to serve requests, typically the last entry
-      ReactKataWeb.Endpoint
+      KatainginreactWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: ReactKata.Supervisor]
+    opts = [strategy: :one_for_one, name: Katainginreact.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
@@ -30,7 +30,7 @@ defmodule ReactKata.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    ReactKataWeb.Endpoint.config_change(changed, removed)
+    KatainginreactWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

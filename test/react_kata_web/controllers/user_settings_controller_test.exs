@@ -1,8 +1,8 @@
-defmodule ReactKataWeb.UserSettingsControllerTest do
-  use ReactKataWeb.ConnCase, async: true
+defmodule KatainginreactWeb.UserSettingsControllerTest do
+  use KatainginreactWeb.ConnCase, async: true
 
-  alias ReactKata.Accounts
-  import ReactKata.AccountsFixtures
+  alias Katainginreact.Accounts
+  import Katainginreact.AccountsFixtures
 
   setup :register_and_log_in_user
 

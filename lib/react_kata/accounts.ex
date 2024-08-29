@@ -1,12 +1,12 @@
-defmodule ReactKata.Accounts do
+defmodule Katainginreact.Accounts do
   @moduledoc """
   The Accounts context.
   """
 
   import Ecto.Query, warn: false
-  alias ReactKata.Repo
+  alias Katainginreact.Repo
 
-  alias ReactKata.Accounts.{User, UserToken, UserNotifier}
+  alias Katainginreact.Accounts.{User, UserToken, UserNotifier}
 
   ## Database getters
 

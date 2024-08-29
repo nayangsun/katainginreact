@@ -1,7 +1,7 @@
-defmodule ReactKataWeb.UserRegistrationControllerTest do
-  use ReactKataWeb.ConnCase, async: true
+defmodule KatainginreactWeb.UserRegistrationControllerTest do
+  use KatainginreactWeb.ConnCase, async: true
 
-  import ReactKata.AccountsFixtures
+  import Katainginreact.AccountsFixtures
 
   describe "GET /users/register" do
     test "renders registration page", %{conn: conn} do

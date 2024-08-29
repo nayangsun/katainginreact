@@ -1,4 +1,4 @@
-defmodule ReactKataWeb.Telemetry do
+defmodule KatainginreactWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -52,23 +52,23 @@ defmodule ReactKataWeb.Telemetry do
       ),
 
       # Database Metrics
-      summary("react_kata.repo.query.total_time",
+      summary("katainginreact.repo.query.total_time",
         unit: {:native, :millisecond},
         description: "The sum of the other measurements"
       ),
-      summary("react_kata.repo.query.decode_time",
+      summary("katainginreact.repo.query.decode_time",
         unit: {:native, :millisecond},
         description: "The time spent decoding the data received from the database"
       ),
-      summary("react_kata.repo.query.query_time",
+      summary("katainginreact.repo.query.query_time",
         unit: {:native, :millisecond},
         description: "The time spent executing the query"
       ),
-      summary("react_kata.repo.query.queue_time",
+      summary("katainginreact.repo.query.queue_time",
         unit: {:native, :millisecond},
         description: "The time spent waiting for a database connection"
       ),
-      summary("react_kata.repo.query.idle_time",
+      summary("katainginreact.repo.query.idle_time",
         unit: {:native, :millisecond},
         description:
           "The time the connection spent waiting before being checked out for the query"
@@ -86,7 +86,7 @@ defmodule ReactKataWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {ReactKataWeb, :count_users, []}
+      # {KatainginreactWeb, :count_users, []}
     ]
   end
 end

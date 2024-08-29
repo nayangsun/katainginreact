@@ -1,10 +1,10 @@
-defmodule ReactKata.AccountsTest do
-  use ReactKata.DataCase
+defmodule Katainginreact.AccountsTest do
+  use Katainginreact.DataCase
 
-  alias ReactKata.Accounts
+  alias Katainginreact.Accounts
 
-  import ReactKata.AccountsFixtures
-  alias ReactKata.Accounts.{User, UserToken}
+  import Katainginreact.AccountsFixtures
+  alias Katainginreact.Accounts.{User, UserToken}
 
   describe "get_user_by_email/1" do
     test "does not return the user if the email does not exist" do

@@ -1,4 +1,4 @@
-defmodule ReactKata.Repo.Migrations.CreateUsersAuthTables do
+defmodule Katainginreact.Repo.Migrations.CreateUsersAuthTables do
   use Ecto.Migration
 
   def change do

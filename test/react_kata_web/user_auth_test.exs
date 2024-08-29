@@ -1,17 +1,17 @@
-defmodule ReactKataWeb.UserAuthTest do
-  use ReactKataWeb.ConnCase, async: true
+defmodule KatainginreactWeb.UserAuthTest do
+  use KatainginreactWeb.ConnCase, async: true
 
   alias Phoenix.LiveView
-  alias ReactKata.Accounts
-  alias ReactKataWeb.UserAuth
-  import ReactKata.AccountsFixtures
+  alias Katainginreact.Accounts
+  alias KatainginreactWeb.UserAuth
+  import Katainginreact.AccountsFixtures
 
-  @remember_me_cookie "_react_kata_web_user_remember_me"
+  @remember_me_cookie "_katainginreact_web_user_remember_me"
 
   setup %{conn: conn} do
     conn =
       conn
-      |> Map.replace!(:secret_key_base, ReactKataWeb.Endpoint.config(:secret_key_base))
+      |> Map.replace!(:secret_key_base, KatainginreactWeb.Endpoint.config(:secret_key_base))
       |> init_test_session(%{})
 
     %{user: user_fixture(), conn: conn}
@@ -66,7 +66,7 @@ defmodule ReactKataWeb.UserAuthTest do
 
     test "broadcasts to the given live_socket_id", %{conn: conn} do
       live_socket_id = "users_sessions:abcdef-token"
-      ReactKataWeb.Endpoint.subscribe(live_socket_id)
+      KatainginreactWeb.Endpoint.subscribe(live_socket_id)
 
       conn
       |> put_session(:live_socket_id, live_socket_id)
@@ -164,7 +164,7 @@ defmodule ReactKataWeb.UserAuthTest do
       session = conn |> put_session(:user_token, user_token) |> get_session()
 
       socket = %LiveView.Socket{
-        endpoint: ReactKataWeb.Endpoint,
+        endpoint: KatainginreactWeb.Endpoint,
         assigns: %{__changed__: %{}, flash: %{}}
       }
 
@@ -176,7 +176,7 @@ defmodule ReactKataWeb.UserAuthTest do
       session = conn |> get_session()
 
       socket = %LiveView.Socket{
-        endpoint: ReactKataWeb.Endpoint,
+        endpoint: KatainginreactWeb.Endpoint,
         assigns: %{__changed__: %{}, flash: %{}}
       }
 

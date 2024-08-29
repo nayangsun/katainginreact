@@ -1,5 +1,5 @@
-defmodule ReactKataWeb.UserJSON do
-  alias ReactKata.Accounts.User
+defmodule KatainginreactWeb.UserJSON do
+  alias Katainginreact.Accounts.User
 
   @doc """
   Renders a single user.

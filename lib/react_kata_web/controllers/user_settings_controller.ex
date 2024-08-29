@@ -1,8 +1,8 @@
-defmodule ReactKataWeb.UserSettingsController do
-  use ReactKataWeb, :controller
+defmodule KatainginreactWeb.UserSettingsController do
+  use KatainginreactWeb, :controller
 
-  alias ReactKata.Accounts
-  alias ReactKataWeb.UserAuth
+  alias Katainginreact.Accounts
+  alias KatainginreactWeb.UserAuth
 
   plug :assign_email_and_password_changesets
 

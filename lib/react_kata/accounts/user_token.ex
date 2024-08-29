@@ -1,7 +1,7 @@
-defmodule ReactKata.Accounts.UserToken do
+defmodule Katainginreact.Accounts.UserToken do
   use Ecto.Schema
   import Ecto.Query
-  alias ReactKata.Accounts.UserToken
+  alias Katainginreact.Accounts.UserToken
 
   @hash_algorithm :sha256
   @rand_size 32
@@ -17,7 +17,7 @@ defmodule ReactKata.Accounts.UserToken do
     field :token, :binary
     field :context, :string
     field :sent_to, :string
-    belongs_to :user, ReactKata.Accounts.User
+    belongs_to :user, Katainginreact.Accounts.User
 
     timestamps(updated_at: false)
   end
