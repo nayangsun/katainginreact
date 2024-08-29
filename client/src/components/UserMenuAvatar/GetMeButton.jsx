@@ -4,7 +4,12 @@ import { QUERY_KEY } from "../../lib/constants";
 import fetchJson from "../../lib/fetch_json";
 
 export default function GetMeButton() {
-  const { data: user, refetch, error, isFetching } = useQuery({
+  const {
+    data: user,
+    refetch,
+    error,
+    isFetching,
+  } = useQuery({
     queryKey: [QUERY_KEY.test],
     queryFn: async () => fetchJson("/api/me", { credentials: "include" }),
     enabled: false,
