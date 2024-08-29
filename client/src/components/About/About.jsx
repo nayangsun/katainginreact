@@ -1,9 +1,7 @@
-import { Box, Grid, Typography, IconButton } from "@mui/material";
-import NearMeIcon from "@mui/icons-material/NearMe";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Box, Grid, Typography } from "@mui/material";
 
 function About() {
-  const navigate = useNavigate();
   return (
     <Box
       sx={{

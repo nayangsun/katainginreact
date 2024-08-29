@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "./useAuth";
@@ -33,7 +33,6 @@ export default function AuthProvider({ children }) {
     if (user) {
       const convertedUser = { user: user.data };
       setStoredUser(convertedUser);
-      console.log("AuthProvider user:", user);
       setAuth(true);
     }
   }, [user]);
@@ -44,10 +43,9 @@ export default function AuthProvider({ children }) {
     if (!isUserStored && user) {
       queryClient.invalidateQueries(QUERY_KEY.user);
     } else {
-      console.log("isUserStored:", isUserStored);
       setAuth(isUserStored);
     }
-  }, [user, location.pathname]);
+  }, [user, location.pathname, queryClient]);
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, user }}>

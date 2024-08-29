@@ -6,13 +6,11 @@ import Login from "../Login/Login";
 
 function RequireAuthenticatedUser({ children }) {
   const { isAuthenticated: isAuthenticated } = useAuth();
-  console.log("RequireAuthenticatedUser isAuthenticated:", isAuthenticated);
   return isAuthenticated ? children : <Navigate to="/login" replace />;
 }
 
 function RedirectIfUserIsAuthenticated({ children }) {
   const { isAuthenticated: isAuthenticated } = useAuth();
-  console.log("RedirectIfUserIsAuthenticated isAuthenticated:", isAuthenticated);
   return isAuthenticated ? <Navigate to="/" replace /> : children;
 }
 

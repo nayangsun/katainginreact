@@ -10,7 +10,6 @@ export function setStoredUser(user) {
 }
 
 export function removeStoredUser() {
-  console.log("removeStoredUser");
   localStorage.removeItem(LOCAL_STORAGE_KEY.user);
 }
 
