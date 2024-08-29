@@ -7,19 +7,19 @@
 # General application configuration
 import Config
 
-config :react_kata,
-  ecto_repos: [ReactKata.Repo],
+config :katainginreact,
+  ecto_repos: [Katainginreact.Repo],
   generators: [api_prefix: "/api/v1"]
 
 # Configures the endpoint
-config :react_kata, ReactKataWeb.Endpoint,
+config :katainginreact, KatainginreactWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: ReactKataWeb.ErrorHTML, json: ReactKataWeb.ErrorJSON],
+    formats: [html: KatainginreactWeb.ErrorHTML, json: KatainginreactWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: ReactKata.PubSub,
+  pubsub_server: Katainginreact.PubSub,
   live_view: [signing_salt: "o/XB486U"]
 
 # Configures the mailer
@@ -29,12 +29,12 @@ config :react_kata, ReactKataWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :react_kata, ReactKata.Mailer, adapter: Swoosh.Adapters.Local
+config :katainginreact, Katainginreact.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",
-  react_kata: [
+  katainginreact: [
     args:
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
@@ -44,7 +44,7 @@ config :esbuild,
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "3.4.3",
-  react_kata: [
+  katainginreact: [
     args: ~w(
       --config=tailwind.config.js
       --input=css/app.css
@@ -61,7 +61,7 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config :react_kata, ReactKata.Repo, migration_timestamps: [type: :utc_datetime]
+config :katainginreact, Katainginreact.Repo, migration_timestamps: [type: :utc_datetime]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(ReactKata.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(Katainginreact.Repo, :manual)

@@ -1,7 +1,7 @@
 # Configures Swoosh API Client
 import Config
 
-config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: ReactKata.Finch
+config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: Katainginreact.Finch
 
 # Disable Swoosh Local Memory Storage
 config :swoosh, local: false
