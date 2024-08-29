@@ -37,11 +37,11 @@ function UserMenuAvatar({ user }) {
         }}
         sx={{ minWidth: 200 }}
       >
-        <MenuItem component={RouterLink} to="/">
+        <MenuItem component={RouterLink} to="/about">
           <ListItemIcon>
             <PersonIcon />
           </ListItemIcon>
-          Menu 1
+          About
         </MenuItem>
         <MenuItem component={RouterLink} to="/">
           <ListItemIcon>

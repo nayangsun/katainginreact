@@ -6,6 +6,7 @@ import { StyledEngineProvider } from "@mui/material/styles";
 import { SnackbarProvider } from "notistack";
 import { ConfirmProvider } from "material-ui-confirm";
 import { queryClient } from "./reactQuery";
+import AuthProvider from "../AuthProvider/AuthProvider";
 import CssBaseline from "@mui/material/CssBaseline";
 import Navigation from "../Navigation/Navigation";
 
@@ -14,14 +15,16 @@ function App() {
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <StyledEngineProvider injectFirst>
-          <SnackbarProvider
-            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-          >
-            <ConfirmProvider>
-              <CssBaseline />
-              <Navigation />
-            </ConfirmProvider>
-          </SnackbarProvider>
+          <AuthProvider>
+            <SnackbarProvider
+              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+            >
+              <ConfirmProvider>
+                <CssBaseline />
+                <Navigation />
+              </ConfirmProvider>
+            </SnackbarProvider>
+          </AuthProvider>
         </StyledEngineProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
