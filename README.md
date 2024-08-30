@@ -1,6 +1,7 @@
-<h1 align="center">Kataing In React</h1>
+<h1 align="center">Kata-ing In React</h1>
+<br />
 <div align="center">
-  <img height="120" src="art/readme_header.png" />
+  <img height="500" src="art/readme_header.png" alt="Kata-ing In React Logo" />
 </div>
 <br />
 <div align="center">
@@ -8,6 +9,7 @@
     Kata-ing React and Phoenix with JSON and APIs.
   </strong>
 </div>
+<br />
 <br />
 
 한국어 | [English](./README-en.md)
@@ -30,6 +32,19 @@ client and a [open API](https://github.com/OAI/OpenAPI-Specification) server wit
 
 ## Getting Started 🚀
 
+이 프로젝트를 실행하기 전에 Elixir, Node.js, PostgreSQL이 설치되어 있어야 해요.
+그런 다음, 다음 명령어를 실행하여 프로젝트를 실행할 수 있어요.
+
+```sh
+# fetch dependencies and create database
+$ mix setup
+
+# start the application
+$ mix phx.server
+
+# run tests
+$ mix test
+```
 
 ## Learn more
   * Official website(react): https://reactjs.org/
