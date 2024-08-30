@@ -74,13 +74,20 @@ defmodule Katainginreact.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "ecto.setup", "client.setup"],
+      setup: ["deps.get", "ecto.setup", "client.setup", "assets.setup", "assets.build"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate", "test"],
       "client.setup": ["cmd npm install --prefix client"],
       "client.build": ["cmd npm run build --prefix client", "phx.digest"],
-      "format.all": ["format", "cmd npm run format --prefix client"]
+      "format.all": ["format", "cmd npm run format --prefix client"],
+      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
+      "assets.build": ["tailwind katainginreact", "esbuild katainginreact"],
+      "assets.deploy": [
+        "tailwind katainginreact --minify",
+        "esbuild katainginreact --minify",
+        "phx.digest"
+      ]
     ]
   end
 end
