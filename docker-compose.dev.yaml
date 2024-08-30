@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15.3
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - /var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - postgres
+    environment:
+      - DB_HOST=postgres
+    volumes:
+      - ./:/app
+    ports:
+      - "4000:4000"
+      - "3000:3000"
+
+    # 루트 대신 사용자로 실행하여 생성된 파일이 해당 사용자에게 속하도록 합니다.
+    user: ${UID:-999}:${GID:-999}
