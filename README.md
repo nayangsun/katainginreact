@@ -33,7 +33,7 @@ client and a [open API](https://github.com/OAI/OpenAPI-Specification) server wit
 ## Getting Started 🚀
 
 이 프로젝트를 실행하기 전에 Elixir, Node.js, PostgreSQL이 설치되어 있어야 해요.
-그런 다음, 다음 명령어를 실행하여 프로젝트를 실행할 수 있어요.
+그런 다음, 다음 명령어를 실행하여 프로젝트를 시작할 수 있어요.
 
 ```sh
 # fetch dependencies and create database
@@ -45,6 +45,18 @@ $ mix phx.server
 # run tests
 $ mix test
 ```
+
+### Getting Started with Docker 🐳
+
+Docker와 Docker Compose가 설치되어 있다면, 이를 사용해서도 프로젝트를 시작할 수 있어요.
+
+```sh
+docker compose -f docker-compose.dev.yml up
+```
+
+그러면 client(port: 3000)와 server(port: 4000) 그리고 database가 실행될 거에요. Docker가 관련 서비스를 포트에 바인딩하니, 여러분의 machine에서 위의 포트가 사용되고 있지 않은지 확인해주세요. 처음 실행할 때는 Docker 이미지를 빌드하고 모든 dependencies를 설치하므로 시간이 좀 걸릴 수 있어요. 이후 실행은 상대적으로 빠를 거에요.
+
+모든게 컨테이너에 올라가고 실행이 되면 여러분은 앱에 [`localhost:3000`](http://localhost:3000)으로 접속할 수 있어요.
 
 ## Learn more
   * Official website(react): https://reactjs.org/
