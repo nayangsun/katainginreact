@@ -1,12 +1,6 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import {
-  Box,
-  Grid,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { Box, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import SettingsMenuAvatar from "../SettingsMenuAvatar/SettingsMenuAvatar";
 
