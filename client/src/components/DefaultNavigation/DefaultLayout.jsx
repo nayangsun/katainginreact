@@ -1,7 +1,14 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { Box, Button, Grid, Toolbar, Typography } from "@mui/material";
-import UserMenuAvatar from "../UserMenuAvatar/UserMenuAvatar";
+import {
+  Box,
+  Grid,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import SettingsMenuAvatar from "../SettingsMenuAvatar/SettingsMenuAvatar";
 
 function DefaultLayout({ currentUser, loaded, children }) {
   return (
@@ -10,10 +17,20 @@ function DefaultLayout({ currentUser, loaded, children }) {
         height: "100vh",
         display: "flex",
         flexDirection: "column",
+        background:
+          "linear-gradient(100deg, rgba(135,206,235,0.1), rgba(75,0,130,0.1), rgba(255,192,203,0.1))",
+        WebkitMaskImage:
+          "linear-gradient(to bottom, rgba(255,255,255,1) 75%, rgba(255,255,255,0))",
       }}
     >
       <Toolbar>
         <Grid container spacing={2} alignItems="center">
+          <Grid item>
+            <IconButton size="small">
+              <SearchIcon />
+            </IconButton>
+          </Grid>
+          <Grid item sx={{ flexGrow: 1 }} />
           <Grid item>
             <Box
               component={RouterLink}
@@ -31,24 +48,10 @@ function DefaultLayout({ currentUser, loaded, children }) {
             </Box>
           </Grid>
           <Grid item sx={{ flexGrow: 1 }} />
-          {loaded &&
-            (currentUser ? (
-              <Grid item>
-                <UserMenuAvatar user={currentUser} />
-              </Grid>
-            ) : (
-              <Grid item>
-                <Button
-                  variant="outlined"
-                  size="small"
-                  color="inherit"
-                  component={RouterLink}
-                  to="/login"
-                >
-                  Login
-                </Button>
-              </Grid>
-            ))}
+
+          <Grid item>
+            <SettingsMenuAvatar user={currentUser} loaded={loaded} />
+          </Grid>
         </Grid>
       </Toolbar>
       <Box sx={{ flexGrow: 1 }}>{children}</Box>

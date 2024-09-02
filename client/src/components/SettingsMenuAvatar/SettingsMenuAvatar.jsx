@@ -9,17 +9,17 @@ import {
   MenuItem,
 } from "@mui/material";
 import LogoutMenuItem from "./LogoutMenuItem";
-import PersonIcon from "@mui/icons-material/Person";
+import SettingsIcon from "@mui/icons-material/Settings";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 
-function UserMenuAvatar({ user }) {
+function SettingsMenuAvatar({ user, loaded }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const anchorEl = useRef();
 
   return (
     <>
       <IconButton ref={anchorEl} onClick={() => setMenuOpen(true)} size="small">
-        <Avatar alt={user.id} src={"#"} size="small" />
+        <SettingsIcon />
       </IconButton>
       <Menu
         open={menuOpen}
@@ -37,12 +37,20 @@ function UserMenuAvatar({ user }) {
         }}
         sx={{ minWidth: 200 }}
       >
-        <MenuItem component={RouterLink} to="/about">
-          <ListItemIcon>
-            <PersonIcon />
-          </ListItemIcon>
-          About
-        </MenuItem>
+        {loaded &&
+          (user ? (
+            <MenuItem component={RouterLink} to="/about">
+              <ListItemIcon>
+                <Avatar
+                  alt={user.id}
+                  src={"#"}
+                  sx={{ width: 24, height: 24 }}
+                />
+              </ListItemIcon>
+              About
+            </MenuItem>
+          ) : null)}
+
         <MenuItem component={RouterLink} to="/">
           <ListItemIcon>
             <AssignmentIndIcon />
@@ -56,4 +64,4 @@ function UserMenuAvatar({ user }) {
   );
 }
 
-export default UserMenuAvatar;
+export default SettingsMenuAvatar;
