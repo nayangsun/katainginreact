@@ -11,6 +11,9 @@ config :katainginreact,
   ecto_repos: [Katainginreact.Repo],
   generators: [api_prefix: "/api/v1"]
 
+# https://hexdocs.pm/ecto_sql/Ecto.Migration.html#module-migrations-configuration
+config :katainginreact, Katainginreact.Repo, migration_timestamps: [type: :utc_datetime]
+
 # Configures the endpoint
 config :katainginreact, KatainginreactWeb.Endpoint,
   url: [host: "localhost"],
@@ -60,8 +63,6 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
-
-config :katainginreact, Katainginreact.Repo, migration_timestamps: [type: :utc_datetime]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

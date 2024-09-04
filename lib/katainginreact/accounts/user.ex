@@ -1,5 +1,5 @@
 defmodule Katainginreact.Accounts.User do
-  use Ecto.Schema
+  use Katainginreact.Schema
   import Ecto.Changeset
 
   schema "users" do

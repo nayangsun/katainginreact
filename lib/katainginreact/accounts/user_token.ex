@@ -1,5 +1,5 @@
 defmodule Katainginreact.Accounts.UserToken do
-  use Ecto.Schema
+  use Katainginreact.Schema
   import Ecto.Query
   alias Katainginreact.Accounts.UserToken
 

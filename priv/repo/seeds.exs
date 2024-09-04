@@ -10,6 +10,6 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-import Katainginreact.Factory
+alias Katainginreact.Accounts
 
-insert!(:user, email: "test@example.com")
+{:ok, _user} = Accounts.register_user(%{email: "user@example.com", password: "password1234"})
