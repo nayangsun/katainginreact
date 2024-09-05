@@ -1,5 +1,5 @@
-import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 import {
   Box,
   Grid,
@@ -15,21 +15,22 @@ import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import Grid3x3OutlinedIcon from "@mui/icons-material/Grid3x3Outlined";
 import SettingsMenuAvatar from "../SettingsMenuAvatar/SettingsMenuAvatar";
 
-function getTitle(value) {
-  switch (value) {
-    case 0:
-      return "Kataing In React";
-    case 1:
-      return "Saved";
-    case 2:
-      return "Interests";
-    default:
-      return "Kataing In React";
-  }
+const titles = ["Kataing In React", "Saved", "Interests"];
+const paths = ["/", "/saved", "/interests"];
+
+function getIndexFromPath(path) {
+  return paths.indexOf(path) !== -1 ? paths.indexOf(path) : 0;
 }
 
 function DefaultLayout({ currentUser, loaded, children }) {
-  const [value, setValue] = React.useState(0);
+  const location = useLocation();
+  const initialPathIndex = getIndexFromPath(location.pathname);
+  const [value, setValue] = React.useState(initialPathIndex);
+
+  useEffect(() => {
+    const index = getIndexFromPath(location.pathname);
+    setValue(index);
+  }, [location.pathname]);
 
   return (
     <Box
@@ -51,7 +52,9 @@ function DefaultLayout({ currentUser, loaded, children }) {
           zIndex: 0,
         }}
       />
-      <Toolbar sx={{ zIndex: 1 }}>
+      <Toolbar
+        sx={{ zIndex: 2, position: "sticky", top: 0, background: "white" }}
+      >
         <Grid container spacing={2} alignItems="center">
           <Grid item>
             <IconButton size="small">
@@ -69,7 +72,7 @@ function DefaultLayout({ currentUser, loaded, children }) {
               }}
             >
               <Typography variant="h6" sx={{ ml: 1 }}>
-                {getTitle(value)}
+                {titles[value]}
               </Typography>
             </Box>
           </Grid>
@@ -79,13 +82,13 @@ function DefaultLayout({ currentUser, loaded, children }) {
           </Grid>
         </Grid>
       </Toolbar>
-
-      <Box sx={{ flexGrow: 1, zIndex: 1 }}>{children}</Box>
+      <Box
+        sx={{ flexGrow: 1, zIndex: 1, overflowY: "auto", marginBottom: "56px" }}
+      >
+        {children}
+      </Box>
       <BottomNavigation
         value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
         sx={{ width: "100%", position: "fixed", bottom: 0, zIndex: 1 }}
       >
         <BottomNavigationAction
@@ -110,4 +113,5 @@ function DefaultLayout({ currentUser, loaded, children }) {
     </Box>
   );
 }
+
 export default DefaultLayout;
