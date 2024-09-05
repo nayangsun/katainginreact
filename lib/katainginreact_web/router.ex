@@ -37,6 +37,7 @@ defmodule KatainginreactWeb.Router do
     pipe_through [:api, :require_authenticated_user_api]
 
     get "/me", UserController, :show
+    get "/topics", TopicController, :index
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
