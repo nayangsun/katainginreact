@@ -2,6 +2,8 @@ import React from "react";
 import { useQueries } from "@tanstack/react-query";
 import { List, Box } from "@mui/material";
 import TopicListItem from "./TopicListItem";
+import Error from "../Error/Error";
+import Loading from "../Loading/Loading";
 import { QUERY_KEY } from "../../lib/constants";
 import fetchJson from "../../lib/fetch_json";
 
@@ -39,8 +41,8 @@ function useTopicAndUserQueries() {
 function Interests() {
   const { data: topics, error, isPending } = useTopicAndUserQueries();
 
-  if (isPending) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (isPending && !topics) return <Loading />;
+  if (error) return <Error error={error} />;
 
   return (
     <Box sx={{ padding: 2 }}>

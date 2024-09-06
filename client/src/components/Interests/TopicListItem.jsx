@@ -59,9 +59,8 @@ function TopicListItem({ topic }) {
           sx={{
             backgroundColor: topic.isFollowed ? "lightpink" : "inherit",
             "&:hover": {
-              backgroundColor: topic.isFollowed
-                ? "rgba(255, 182, 193, 0.6)"
-                : "inherit",
+              backgroundColor: topic.isFollowed ? "lightpink" : undefined,
+              opacity: 0.8,
             },
           }}
           onClick={handleFollowClick}
