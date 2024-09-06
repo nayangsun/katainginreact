@@ -3,7 +3,7 @@ export const LOCAL_STORAGE_KEY = {
 };
 
 export const QUERY_KEY = {
+  auth: "kir:auth",
   user: "kir:user",
-  test: "kir:test",
   topic: "kir:topic",
 };

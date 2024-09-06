@@ -10,7 +10,7 @@ export default function GetMeButton() {
     error,
     isFetching,
   } = useQuery({
-    queryKey: [QUERY_KEY.test],
+    queryKey: [QUERY_KEY.user],
     queryFn: async () => fetchJson("/api/me", { credentials: "include" }),
     enabled: false,
   });

@@ -36,6 +36,8 @@ defmodule KatainginreactWeb.Router do
   scope "/api/v1", KatainginreactWeb do
     pipe_through [:api, :require_authenticated_user_api]
 
+    get "/auth", UserSessionAPIController, :show
+
     get "/me", UserController, :show
     post "/users/:topic_id/follow", UserController, :follow
     post "/users/:topic_id/unfollow", UserController, :unfollow

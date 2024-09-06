@@ -6,6 +6,10 @@ defmodule KatainginreactWeb.UserSessionAPIController do
 
   action_fallback KatainginreactWeb.FallbackController
 
+  def show(conn, _params) do
+    render(conn, :show, user: conn.assigns.current_user)
+  end
+
   def create(conn, %{"user" => user_params}) do
     %{"email" => email, "password" => password} = user_params
 

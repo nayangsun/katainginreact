@@ -6,7 +6,7 @@ import { QUERY_KEY } from "../../lib/constants";
 import { getStoredUser, setStoredUser } from "../../lib/auth";
 
 function getUser() {
-  return fetch("/api/me", { credentials: "include" }).then((response) => {
+  return fetch("/api/auth", { credentials: "include" }).then((response) => {
     if (!response.ok) {
       return null;
     }
@@ -21,7 +21,7 @@ export default function AuthProvider({ children }) {
   const queryClient = useQueryClient();
 
   const { data: user } = useQuery({
-    queryKey: [QUERY_KEY.user],
+    queryKey: [QUERY_KEY.auth],
     queryFn: async () => getUser(),
     refetchOnMount: false,
     refetchOnWindowFocus: false,
