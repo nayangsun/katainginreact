@@ -9,14 +9,13 @@ import {
   CircularProgress,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import CheckIcon from "@mui/icons-material/Check";
 
 function TopicListItem({ topic, onAddClick }) {
   const [loading, setLoading] = useState(true);
-
   function handleImageLoad() {
     setLoading(false);
   }
-
   return (
     <ListItem key={topic.id} sx={{ display: "flex", alignItems: "center" }}>
       <ListItemButton sx={{ flexGrow: 1 }}>
@@ -43,8 +42,14 @@ function TopicListItem({ topic, onAddClick }) {
         </Box>
 
         <ListItemText primary={topic.name} />
-        <IconButton edge="end" onClick={() => onAddClick(topic.id)}>
-          <AddIcon />
+        <IconButton
+          edge="end"
+          onClick={() => onAddClick(topic.id)}
+          sx={{
+            backgroundColor: topic.isFollowed ? "lightpink" : "inherit",
+          }}
+        >
+          {topic.isFollowed ? <CheckIcon /> : <AddIcon />}
         </IconButton>
       </ListItemButton>
     </ListItem>
