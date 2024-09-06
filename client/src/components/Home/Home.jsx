@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Container } from "@mui/material";
 import viteLogo from "/vite.svg";
 import "./Home.css";
-import GetMeButton from "../SettingsMenuAvatar/GetMeButton";
 import reactLogo from "../../assets/react.svg";
 
 const toolbarHeight = 64;
@@ -38,8 +37,6 @@ function Home() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-
-      <GetMeButton />
 
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more

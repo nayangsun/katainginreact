@@ -2,8 +2,8 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "./useAuth";
+import { getStoredUser, setStoredUser } from "./userStorage";
 import { QUERY_KEY } from "../../lib/constants";
-import { getStoredUser, setStoredUser } from "../../lib/auth";
 
 function getUser() {
   return fetch("/api/auth", { credentials: "include" }).then((response) => {
@@ -14,7 +14,7 @@ function getUser() {
   });
 }
 
-export default function AuthProvider({ children }) {
+function AuthProvider({ children }) {
   const storedUser = useMemo(getStoredUser, []);
   const [isAuthenticated, setAuth] = useState(storedUser ? true : false);
   const location = useLocation();
@@ -53,3 +53,5 @@ export default function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
+export default AuthProvider;

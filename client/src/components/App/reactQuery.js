@@ -1,5 +1,5 @@
 import { QueryCache, QueryClient } from "@tanstack/react-query";
-import { removeStoredUser } from "../../lib/auth";
+import { removeStoredUser } from "../AuthProvider/userStorage";
 
 // I'm not sure if handling this with an API Interceptor is the right approach.
 const queryCache = new QueryCache({

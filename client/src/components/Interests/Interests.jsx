@@ -52,4 +52,5 @@ function Interests() {
     </Box>
   );
 }
+
 export default Interests;
