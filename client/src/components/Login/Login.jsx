@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import { formatSentence } from "../../lib/utils";
 import { Link, Box, Typography, Container } from "@mui/material";
 import { useSnackbar } from "notistack";
 import LoginForm from "./LoginForm";
 import { login } from "../../lib/auth";
 import { QUERY_KEY } from "../../lib/constants";
+import { formatSentence } from "../../lib/utils";
 
 function Login() {
   const queryClient = useQueryClient();

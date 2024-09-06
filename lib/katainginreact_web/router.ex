@@ -39,8 +39,8 @@ defmodule KatainginreactWeb.Router do
     get "/auth", UserSessionAPIController, :show
 
     get "/me", UserController, :show
-    post "/users/:topic_id/follow", UserController, :follow
-    post "/users/:topic_id/unfollow", UserController, :unfollow
+    post "/users/topic/follow", UserController, :follow
+    post "/users/topic/unfollow", UserController, :unfollow
 
     get "/topics", TopicController, :index
   end

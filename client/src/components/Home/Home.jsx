@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Container } from "@mui/material";
-import reactLogo from "../../assets/react.svg";
-import GetMeButton from "../SettingsMenuAvatar/GetMeButton";
 import viteLogo from "/vite.svg";
 import "./Home.css";
+import GetMeButton from "../SettingsMenuAvatar/GetMeButton";
+import reactLogo from "../../assets/react.svg";
 
 const toolbarHeight = 64;
 
