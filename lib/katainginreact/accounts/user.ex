@@ -2,12 +2,16 @@ defmodule Katainginreact.Accounts.User do
   use Katainginreact.Schema
   import Ecto.Changeset
 
+  alias Katainginreact.Topics.Topic
+
   schema "users" do
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :current_password, :string, virtual: true, redact: true
     field :confirmed_at, :naive_datetime
+
+    many_to_many :topics, Topic, join_through: "user_topics", on_replace: :delete
 
     timestamps()
   end

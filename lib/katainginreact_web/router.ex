@@ -37,6 +37,9 @@ defmodule KatainginreactWeb.Router do
     pipe_through [:api, :require_authenticated_user_api]
 
     get "/me", UserController, :show
+    post "/users/:topic_id/follow", UserController, :follow
+    post "/users/:topic_id/unfollow", UserController, :unfollow
+
     get "/topics", TopicController, :index
   end
 

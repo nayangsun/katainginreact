@@ -2,6 +2,8 @@ defmodule Katainginreact.Topics.Topic do
   use Katainginreact.Schema
   import Ecto.Changeset
 
+  alias Katainginreact.Accounts.User
+
   @required_fields [:name]
   @optional_fields [:short_description, :long_description, :image_url, :url]
 
@@ -11,6 +13,8 @@ defmodule Katainginreact.Topics.Topic do
     field :long_description, :string
     field :image_url, :string
     field :url, :string
+
+    many_to_many :users, User, join_through: "user_topics"
 
     timestamps()
   end

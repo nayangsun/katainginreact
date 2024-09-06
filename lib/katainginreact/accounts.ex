@@ -4,8 +4,9 @@ defmodule Katainginreact.Accounts do
   """
 
   import Ecto.Query, warn: false
-  alias Katainginreact.Repo
+  import Ecto.Changeset
 
+  alias Katainginreact.Repo
   alias Katainginreact.Accounts.{User, UserToken, UserNotifier}
 
   ## Database getters
@@ -349,5 +350,23 @@ defmodule Katainginreact.Accounts do
       {:ok, %{user: user}} -> {:ok, user}
       {:error, :user, changeset, _} -> {:error, changeset}
     end
+  end
+
+  def follow_topic(user, topic) do
+    user = Repo.preload(user, :topics)
+
+    user
+    |> change()
+    |> put_assoc(:topics, user.topics ++ [topic])
+    |> Repo.update()
+  end
+
+  def unfollow_topic(user, topic) do
+    user = Repo.preload(user, :topics)
+
+    user
+    |> change()
+    |> put_assoc(:topics, user.topics -- [topic])
+    |> Repo.update()
   end
 end
