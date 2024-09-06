@@ -36,7 +36,6 @@ function useTopicAndUserQueries() {
   });
 }
 
-
 function Interests() {
   const { data: topics, error, isPending } = useTopicAndUserQueries();
 
