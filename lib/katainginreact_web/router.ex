@@ -31,6 +31,8 @@ defmodule KatainginreactWeb.Router do
 
     post "/users/log_in", UserSessionAPIController, :create
     delete "/users/log_out", UserSessionAPIController, :delete
+
+    post "/users/register", UserRegistrationController, :create
   end
 
   scope "/api/v1", KatainginreactWeb do

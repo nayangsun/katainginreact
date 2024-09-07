@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Link, Box, Typography, Container } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
-import LoginForm from "./LoginForm";
-import { login } from "../../lib/auth";
+import { Link as RouterLink } from "react-router-dom";
+import RegisterForm from "./RegisterForm";
+import { register } from "../../lib/auth";
 import { QUERY_KEY } from "../../lib/constants";
 import { formatSentence } from "../../lib/utils";
+import { errorToMessage } from "../../lib/errors";
 
-function Login() {
+function Register() {
   const queryClient = useQueryClient();
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
@@ -18,16 +20,15 @@ function Login() {
   function handleSubmit({ email, password }) {
     setLoading(true);
 
-    login({ email, password }).then(({ status, data }) => {
+    register({ email, password }).then(({ status, data }) => {
       setLoading(false);
 
       if (status === "ok") {
         queryClient.invalidateQueries(QUERY_KEY.user);
         navigate("/");
       } else {
-        enqueueSnackbar(formatSentence(data.errors.message), {
-          variant: "error",
-        });
+        const message = errorToMessage(data);
+        enqueueSnackbar(formatSentence(message), { variant: "error" });
       }
     });
   }
@@ -54,27 +55,27 @@ function Login() {
       >
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <Typography component="h1" variant="h6" sx={{ fontWeight: "bold" }}>
-            Log in to account
+            Register for an account
           </Typography>
 
           <Typography variant="body2">
-            {"Don't have an account? "}
+            {"Already registered? "}
             <Link
               component={RouterLink}
-              to="/users/register"
+              to="/login"
               variant="body2"
               sx={{ fontWeight: "bold", textDecoration: "none" }}
             >
-              {"Sign up"}
+              {"Log in"}
             </Link>
-            {" for an account now."}
+            {" to your account now."}
           </Typography>
         </Box>
 
-        <LoginForm onSubmit={handleSubmit} loading={loading} />
+        <RegisterForm onSubmit={handleSubmit} loading={loading} />
       </Box>
     </Container>
   );
 }
 
-export default Login;
+export default Register;

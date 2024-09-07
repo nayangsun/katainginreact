@@ -18,3 +18,18 @@ export function login({ email, password }) {
     }))
   );
 }
+
+export function register({ email, password }) {
+  return fetch("/api/users/register", {
+    method: "POST",
+    body: JSON.stringify({
+      user: { email: email, password: password },
+    }),
+    headers: { "Content-Type": "application/json" },
+  }).then((response) =>
+    response.json().then((data) => ({
+      status: response.ok ? "ok" : "error",
+      data,
+    }))
+  );
+}
