@@ -94,7 +94,7 @@ defmodule KatainginreactWeb.UserAPIAuth do
       conn
     else
       conn
-      |> put_status(401)
+      |> put_status(:unauthorized)
       |> put_view(html: KatainginreactWeb.ErrorHTML, json: KatainginreactWeb.ErrorJSON)
       |> render(:"401")
       |> halt()

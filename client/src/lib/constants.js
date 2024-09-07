@@ -7,3 +7,6 @@ export const QUERY_KEY = {
   user: "kir:user",
   topic: "kir:topic",
 };
+
+export const toolbarHeight = "64px";
+export const bottomNavHeight = "56px";

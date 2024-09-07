@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Link, Box, Typography, Container } from "@mui/material";
 import { useSnackbar } from "notistack";
+import { useNavigate } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import { login } from "../../lib/auth";
 import { QUERY_KEY } from "../../lib/constants";
@@ -10,6 +11,7 @@ import { formatSentence } from "../../lib/utils";
 function Login() {
   const queryClient = useQueryClient();
   const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
 
@@ -21,8 +23,11 @@ function Login() {
 
       if (status === "ok") {
         queryClient.invalidateQueries(QUERY_KEY.user);
+        navigate("/");
       } else {
-        enqueueSnackbar(formatSentence(data.message), { variant: "error" });
+        enqueueSnackbar(formatSentence(data.errors.message), {
+          variant: "error",
+        });
       }
     });
   }

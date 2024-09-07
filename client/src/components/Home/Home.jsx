@@ -3,8 +3,7 @@ import { Container } from "@mui/material";
 import viteLogo from "/vite.svg";
 import "./Home.css";
 import reactLogo from "../../assets/react.svg";
-
-const toolbarHeight = 64;
+import { toolbarHeight, bottomNavHeight } from "../../lib/constants";
 
 function Home() {
   const [count, setCount] = useState(0);
@@ -13,7 +12,7 @@ function Home() {
     <Container
       component="main"
       sx={{
-        minHeight: `calc(100vh - ${toolbarHeight}px)`,
+        minHeight: `calc(100vh - ${toolbarHeight} - ${bottomNavHeight})`,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",

@@ -14,6 +14,7 @@ import UpcomingIcon from "@mui/icons-material/Upcoming";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import Grid3x3OutlinedIcon from "@mui/icons-material/Grid3x3Outlined";
 import SettingsMenuAvatar from "../SettingsMenuAvatar/SettingsMenuAvatar";
+import { bottomNavHeight } from "../../lib/constants";
 
 const titles = ["Kataing In React", "Saved", "Interests"];
 const paths = ["/", "/saved", "/interests"];
@@ -83,7 +84,12 @@ function DefaultLayout({ currentUser, loaded, children }) {
         </Grid>
       </Toolbar>
       <Box
-        sx={{ flexGrow: 1, zIndex: 1, overflowY: "auto", marginBottom: "56px" }}
+        sx={{
+          flexGrow: 1,
+          zIndex: 1,
+          overflowY: "auto",
+          marginBottom: bottomNavHeight,
+        }}
       >
         {children}
       </Box>

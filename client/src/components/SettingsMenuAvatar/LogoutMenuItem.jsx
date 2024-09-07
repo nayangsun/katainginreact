@@ -1,17 +1,17 @@
 import React from "react";
-import { useQueryClient } from "@tanstack/react-query";
 import { MenuItem, ListItemIcon } from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { useNavigate } from "react-router-dom";
 import { removeStoredUser } from "../AuthProvider/userStorage";
 import { logout } from "../../lib/auth";
-import { QUERY_KEY } from "../../lib/constants";
 
 function LogoutButton() {
-  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+
   function handleLogout() {
     logout().then(() => {
-      queryClient.invalidateQueries(QUERY_KEY.user);
       removeStoredUser();
+      navigate("/login");
     });
   }
 

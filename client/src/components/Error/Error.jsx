@@ -2,8 +2,7 @@ import React from "react";
 import { Box, Button, Grid, Typography, IconButton } from "@mui/material";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import RefreshIcon from "@mui/icons-material/Refresh";
-
-const toolbarHeight = 64;
+import { toolbarHeight } from "../../lib/constants";
 
 function Error({ error = null }) {
   const isAuthError = error?.name === "Unauthorized";
@@ -12,7 +11,7 @@ function Error({ error = null }) {
     <Box
       sx={{
         display: "flex",
-        minHeight: `calc(100vh - ${toolbarHeight}px)`,
+        minHeight: `calc(100vh - ${toolbarHeight})`,
         backgroundColor: "white",
         flexDirection: "column",
         justifyContent: "center",

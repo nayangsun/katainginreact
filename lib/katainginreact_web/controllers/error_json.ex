@@ -11,9 +11,13 @@ defmodule KatainginreactWeb.ErrorJSON do
   # def render("500.json", _assigns) do
   #   %{errors: %{detail: "Internal Server Error"}}
   # end
-
   def render("400.json", %{message: message}) do
-    %{detail: Phoenix.Controller.status_message_from_template("400.json"), message: message}
+    %{
+      errors: %{
+        detail: Phoenix.Controller.status_message_from_template("400.json"),
+        message: message
+      }
+    }
   end
 
   # By default, Phoenix returns the status message from
