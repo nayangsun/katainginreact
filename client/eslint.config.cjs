@@ -19,7 +19,7 @@ module.exports = [
       ecmaVersion: "latest",
       sourceType: "module",
     },
-    ignores: ["dist", "eslint.config.mjs"],
+    ignores: ["dist", "eslint.config.cjs"],
     plugins: {
       react: reactPlugin,
       "react-hooks": reactHooksPlugin,
