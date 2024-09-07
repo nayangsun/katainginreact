@@ -5,3 +5,7 @@ export function formatSentence(message) {
 function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export function extractQueriedData(data) {
+  return data && data.data ? data.data : null;
+}

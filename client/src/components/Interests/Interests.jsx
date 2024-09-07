@@ -6,6 +6,7 @@ import Error from "../Error/Error";
 import Loading from "../Loading/Loading";
 import { QUERY_KEY } from "../../lib/constants";
 import fetchJson from "../../lib/fetch_json";
+import { extractQueriedData } from "../../lib/utils";
 
 function useTopicAndUserQueries() {
   return useQueries({
@@ -21,9 +22,10 @@ function useTopicAndUserQueries() {
     ],
     combine: (results) => {
       const [topicResult, userResult] = results;
-      const topicData = topicResult.data?.data || [];
-      const followedTopics = userResult.data?.data?.followedTopics || [];
+      const topicData = extractQueriedData(topicResult.data) || [];
+      const userData = extractQueriedData(userResult.data) || {};
 
+      const followedTopics = userData.followedTopics || [];
       const mergedTopics = topicData.map((topic) => ({
         ...topic,
         isFollowed: followedTopics.includes(topic.id),
@@ -32,7 +34,9 @@ function useTopicAndUserQueries() {
       return {
         data: mergedTopics,
         isPending: results.some((result) => result.isPending),
-        error: results.find((result) => result.error)?.error,
+        error: results.find((result) => result.error)
+          ? results.find((result) => result.error).error
+          : null,
       };
     },
   });
