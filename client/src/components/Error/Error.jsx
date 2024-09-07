@@ -3,9 +3,10 @@ import { Box, Button, Grid, Typography, IconButton } from "@mui/material";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { toolbarHeight } from "../../lib/constants";
+import { isUnauthorizedError } from "../../lib/errors";
 
 function Error({ error = null }) {
-  const isAuthError = error?.name === "Unauthorized";
+  const isUnauthorized = isUnauthorizedError(error);
 
   return (
     <Box
@@ -34,13 +35,13 @@ function Error({ error = null }) {
         </Grid>
         <Grid item>
           <Typography variant="body1" sx={{ color: "#721c24" }}>
-            {isAuthError
+            {isUnauthorized
               ? "You are not authorized to view this page. Please log in."
               : "Something went wrong. Please try again."}
           </Typography>
         </Grid>
         <Grid item>
-          {!isAuthError ? (
+          {!isUnauthorized ? (
             <Button
               href="/"
               variant="contained"

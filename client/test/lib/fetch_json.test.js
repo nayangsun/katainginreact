@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
 import { setupServer } from "msw/node";
-import fetchJson, { ResponseError } from "../../src/lib/fetch_json";
+import fetchJson from "../../src/lib/fetch_json";
 
 const handlers = [
   http.get("https://localhost:3000/api/a", () => {
@@ -23,6 +23,20 @@ const handlers = [
       }
     );
   }),
+  http.post("https://localhost:3000/api/c", () => {
+    return HttpResponse.json(
+      {
+        errors: {
+          email: ["can't be blank"],
+          password: ["can't be blank"],
+        },
+      },
+      {
+        status: 422,
+        statusText: "Unprocessable Entity",
+      }
+    );
+  }),
 ];
 
 const server = setupServer(...handlers);
@@ -41,17 +55,31 @@ describe("fetchJson", () => {
     });
   });
 
-  test("should throw ResponseError on failed fetch", async () => {
+  test("should throw Error on failed fetch", async () => {
     await expect(fetchJson("https://localhost:3000/api/b", { method: "GET" }))
       .rejects
-      .toThrow(ResponseError);
+      .toThrow(Error);
 
     await expect(fetchJson("https://localhost:3000/api/b", { method: "GET" }))
       .rejects
-      .toHaveProperty("name", "Unauthorized");
+      .toMatchObject({ message: "Unauthorized" });
+  });
 
-    await expect(fetchJson("https://localhost:3000/api/b", { method: "GET" }))
+  test("should throw Error with error messages on failed fetch", async () => {
+    await expect(fetchJson("https://localhost:3000/api/c", { method: "POST" }))
       .rejects
-      .toHaveProperty("message", "");
+      .toThrow(Error);
+
+    await expect(fetchJson("https://localhost:3000/api/c", { method: "POST" }))
+      .rejects
+      .toMatchObject({
+        message: "Unprocessable Entity",
+        data: {
+          errors: {
+            email: ["can't be blank"],
+            password: ["can't be blank"],
+          }
+        },
+      });
   });
 });
