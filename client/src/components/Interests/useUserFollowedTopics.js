@@ -1,14 +1,9 @@
-import React from "react";
 import { useQueries } from "@tanstack/react-query";
-import { List, Box } from "@mui/material";
-import TopicListItem from "./TopicListItem";
-import Error from "../Error/Error";
-import Loading from "../Loading/Loading";
 import { QUERY_KEY } from "../../lib/constants";
 import fetchJson from "../../lib/fetch_json";
 import { extractQueriedData } from "../../lib/utils";
 
-function useTopicAndUserQueries() {
+function useUserFollowedTopics() {
   return useQueries({
     queries: [
       {
@@ -23,16 +18,18 @@ function useTopicAndUserQueries() {
     combine: (results) => {
       const [topicResult, userResult] = results;
       const topicData = extractQueriedData(topicResult.data) || [];
-      const userData = extractQueriedData(userResult.data) || {};
+      const userData = extractQueriedData(userResult.data) || {
+        followedTopics: [],
+      };
 
-      const followedTopics = userData.followedTopics || [];
+      const followedTopics = userData.followedTopics;
       const mergedTopics = topicData.map((topic) => ({
         ...topic,
         isFollowed: followedTopics.includes(topic.id),
       }));
 
       return {
-        data: mergedTopics,
+        data: { topics: mergedTopics },
         isPending: results.some((result) => result.isPending),
         error: results.find((result) => result.error)
           ? results.find((result) => result.error).error
@@ -42,21 +39,4 @@ function useTopicAndUserQueries() {
   });
 }
 
-function Interests() {
-  const { data: topics, error, isPending } = useTopicAndUserQueries();
-
-  if (isPending && !topics) return <Loading />;
-  if (error) return <Error error={error} />;
-
-  return (
-    <Box sx={{ padding: 2 }}>
-      <List>
-        {topics.map((topic) => (
-          <TopicListItem key={topic.id} topic={topic} />
-        ))}
-      </List>
-    </Box>
-  );
-}
-
-export default Interests;
+export default useUserFollowedTopics;

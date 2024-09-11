@@ -10,6 +10,7 @@ function Home() {
 
   return (
     <Container
+      id="home"
       component="main"
       sx={{
         minHeight: `calc(100vh - ${toolbarHeight} - ${bottomNavHeight})`,

@@ -4,7 +4,8 @@ import useAuth from "../AuthProvider/useAuth";
 import Home from "../Home/Home";
 import About from "../About/About";
 import DefaultLayout from "./DefaultLayout";
-import Interests from "../Interests/Interests";
+import InterestsList from "../Interests/InterestsList";
+import InterestsDetail from "../Interests/InterestsDetail";
 
 function DefaultNavigation() {
   const { user: user } = useAuth();
@@ -13,7 +14,8 @@ function DefaultNavigation() {
       <Routes>
         <Route path="" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/interests" element={<Interests />} />
+        <Route path="/interests" element={<InterestsList />} />
+        <Route path="/interests/:topicId" element={<InterestsDetail />} />
       </Routes>
     </DefaultLayout>
   );

@@ -9,6 +9,7 @@ import { queryClient } from "./reactQuery";
 import AuthProvider from "../AuthProvider/AuthProvider";
 import CssBaseline from "@mui/material/CssBaseline";
 import Navigation from "../Navigation/Navigation";
+import Interests2PaneProvider from "../Interests2PaneProvider/Interests2PaneProvider";
 
 function App() {
   return (
@@ -16,14 +17,16 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <StyledEngineProvider injectFirst>
           <AuthProvider>
-            <SnackbarProvider
-              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-            >
-              <ConfirmProvider>
-                <CssBaseline />
-                <Navigation />
-              </ConfirmProvider>
-            </SnackbarProvider>
+            <Interests2PaneProvider>
+              <SnackbarProvider
+                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+              >
+                <ConfirmProvider>
+                  <CssBaseline />
+                  <Navigation />
+                </ConfirmProvider>
+              </SnackbarProvider>
+            </Interests2PaneProvider>
           </AuthProvider>
         </StyledEngineProvider>
         <ReactQueryDevtools initialIsOpen={false} />

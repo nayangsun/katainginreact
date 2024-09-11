@@ -12,6 +12,7 @@ import AddIcon from "@mui/icons-material/Add";
 import CheckIcon from "@mui/icons-material/Check";
 import { useSnackbar } from "notistack";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Link as RouterLink } from "react-router-dom";
 import { QUERY_KEY } from "../../lib/constants";
 import fetchJson from "../../lib/fetch_json";
 import { formatSentence } from "../../lib/utils";
@@ -72,7 +73,11 @@ function TopicListItem({ topic }) {
       disablePadding
       sx={{ display: "flex", alignItems: "center" }}
     >
-      <ListItemButton sx={{ flexGrow: 1 }}>
+      <ListItemButton
+        component={RouterLink}
+        to={`/interests/${topic.id}`}
+        sx={{ flexGrow: 1 }}
+      >
         <Box sx={{ position: "relative", marginRight: 2 }}>
           {loading && (
             <CircularProgress

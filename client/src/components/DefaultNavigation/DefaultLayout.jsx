@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link as RouterLink, useLocation } from "react-router-dom";
+import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import {
   Box,
   Grid,
@@ -13,20 +13,34 @@ import SearchIcon from "@mui/icons-material/Search";
 import UpcomingIcon from "@mui/icons-material/Upcoming";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import Grid3x3OutlinedIcon from "@mui/icons-material/Grid3x3Outlined";
+import useInterests2Pane from "../Interests2PaneProvider/useInterests2Pane";
 import SettingsMenuAvatar from "../SettingsMenuAvatar/SettingsMenuAvatar";
-import { bottomNavHeight } from "../../lib/constants";
 
 const titles = ["Kataing In React", "Saved", "Interests"];
-const paths = ["/", "/saved", "/interests"];
 
 function getIndexFromPath(path) {
-  return paths.indexOf(path) !== -1 ? paths.indexOf(path) : 0;
+  if (path === "/") return 0;
+  if (path === "/saved") return 1;
+  if (path.startsWith("/interests")) return 2;
+  return 0;
 }
 
 function DefaultLayout({ currentUser, loaded, children }) {
   const location = useLocation();
   const initialPathIndex = getIndexFromPath(location.pathname);
   const [value, setValue] = React.useState(initialPathIndex);
+  const { paneRole } = useInterests2Pane();
+  const navigate = useNavigate();
+
+  function handleInterestsClick() {
+    const detail = paneRole.match(/^detail:(\d+)$/);
+    if (detail) {
+      const topicId = detail[1];
+      navigate(`/interests/${topicId}`);
+    } else {
+      navigate("/interests");
+    }
+  }
 
   useEffect(() => {
     const index = getIndexFromPath(location.pathname);
@@ -88,14 +102,13 @@ function DefaultLayout({ currentUser, loaded, children }) {
           flexGrow: 1,
           zIndex: 1,
           overflowY: "auto",
-          marginBottom: bottomNavHeight,
         }}
       >
         {children}
       </Box>
       <BottomNavigation
         value={value}
-        sx={{ width: "100%", position: "fixed", bottom: 0, zIndex: 1 }}
+        sx={{ width: "100%", position: "sticky", bottom: 0, zIndex: 1 }}
       >
         <BottomNavigationAction
           label="For you"
@@ -112,8 +125,7 @@ function DefaultLayout({ currentUser, loaded, children }) {
         <BottomNavigationAction
           label="Interests"
           icon={<Grid3x3OutlinedIcon />}
-          component={RouterLink}
-          to="/interests"
+          onClick={handleInterestsClick}
         />
       </BottomNavigation>
     </Box>
