@@ -65,7 +65,7 @@ function TopicListItem({ topic }) {
             },
           }}
           onClick={handleFollowClick}
-          disabled={mutation.isLoading}
+          disabled={mutation.isPending}
         >
           {topic.isFollowed ? <CheckIcon /> : <AddIcon />}
         </IconButton>
