@@ -32,6 +32,9 @@ client and a [open API](https://github.com/OAI/OpenAPI-Specification) server wit
 
 ### Client
 
+클라이언트는 React와 사용하여 빌드된 Web Application이에요. 서버와는 JSON API를 통해 통신하고, React-Query를 사용하여 상태를 관리하고 있어요. 
+[nowinandroid](https://github.com/android/nowinandroid)을 참고하여 구현하고 있어서 UI는 모바일에 최적화되어 있어요.
+
 ## Getting Started 🚀
 
 이 프로젝트를 실행하기 전에 Elixir, Node.js, PostgreSQL이 설치되어 있어야 해요.

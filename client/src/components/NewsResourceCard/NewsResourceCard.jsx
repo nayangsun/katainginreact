@@ -16,6 +16,7 @@ const StyledCard = styled(Card)({
   borderRadius: 16, // theme.shape.borderRadius * 2
   padding: 16, // theme.spacing(2)
   boxShadow: "0px 3px 6px rgba(0, 0, 0, 0.16)", // theme.shadows[3]
+  width: "100%",
 });
 
 const NotificationDot = styled(Box)({
