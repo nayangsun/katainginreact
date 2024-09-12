@@ -54,7 +54,7 @@ function InterestsDetail() {
   if (isPending) return <Loading />;
   if (error) return <Error error={error} />;
 
-  const { topic: topic, newsResources: newsResources } = data;
+  const { topic, newsResources } = data;
 
   if (!topic)
     return (
