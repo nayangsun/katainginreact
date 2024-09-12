@@ -7,7 +7,7 @@ function useUserFollowedTopics() {
   return useQueries({
     queries: [
       {
-        queryKey: [QUERY_KEY.topic],
+        queryKey: [QUERY_KEY.topics],
         queryFn: () => fetchJson("/api/topics"),
       },
       {

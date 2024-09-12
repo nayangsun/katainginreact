@@ -10,20 +10,18 @@ import { QUERY_KEY } from "../../lib/constants";
 import fetchJson from "../../lib/fetch_json";
 import { extractQueriedData } from "../../lib/utils";
 
-const INTERESTS_LIST_QUERY = [
-  {
-    queryKey: [QUERY_KEY.topic],
-    queryFn: () => fetchJson("/api/topics"),
-  },
-  {
-    queryKey: [QUERY_KEY.user],
-    queryFn: () => fetchJson("/api/me"),
-  },
-];
-
 function useCombinedQuery() {
   return useQueries({
-    queries: INTERESTS_LIST_QUERY,
+    queries: [
+      {
+        queryKey: [QUERY_KEY.topics],
+        queryFn: () => fetchJson("/api/topics"),
+      },
+      {
+        queryKey: [QUERY_KEY.user],
+        queryFn: () => fetchJson("/api/me"),
+      },
+    ],
     combine: (results) => {
       const [topicResult, userResult] = results;
       const topicData = extractQueriedData(topicResult.data) || [];

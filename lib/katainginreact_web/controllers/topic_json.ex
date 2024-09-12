@@ -7,6 +7,14 @@ defmodule KatainginreactWeb.TopicJSON do
     %{data: for(topic <- topics, do: data(topic))}
   end
 
+  def show(%{topic: topic, followed?: followed?}) do
+    %{data: data(topic, followed?)}
+  end
+
+  defp data(%Topic{} = topic, followed?) do
+    topic |> data() |> Enum.into(%{followed: followed?})
+  end
+
   defp data(%Topic{} = topic) do
     %{
       id: topic.id,

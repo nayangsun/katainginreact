@@ -45,6 +45,7 @@ defmodule KatainginreactWeb.Router do
     post "/users/topic/unfollow", UserController, :unfollow
 
     get "/topics", TopicController, :index
+    get "/topics/:id", TopicController, :show
 
     get "/news_resources/:topic_id", NewsResourceController, :index
   end

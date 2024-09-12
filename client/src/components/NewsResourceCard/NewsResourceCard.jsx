@@ -65,7 +65,7 @@ function NewsResourceCard({
         </Typography>
 
         <Box display="flex" gap={1} mt={2} overflow="auto">
-          {newsResource.followedTopics.map((topic) => (
+          {newsResource.topics.map((topic) => (
             <Chip
               key={topic.id}
               label={topic.name.toUpperCase()}

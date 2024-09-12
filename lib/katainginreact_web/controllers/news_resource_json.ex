@@ -4,14 +4,14 @@ defmodule KatainginreactWeb.NewsResourceJSON do
   alias Katainginreact.NewsResources.NewsResource
   alias Katainginreact.Topics.Topic
 
-  def index(%{news_resources: news_resources, topics: topics}) do
-    %{data: for(news_resource <- news_resources, do: data(news_resource, topics))}
+  def index(%{news_resources: news_resources, followed_topics: followed_topics}) do
+    %{data: for(news_resource <- news_resources, do: data(news_resource, followed_topics))}
   end
 
-  defp data(%NewsResource{} = news_resource, topics) do
+  defp data(%NewsResource{} = news_resource, followed_topics) do
     topics_with_follow_status =
-      Enum.map(topics, fn topic ->
-        follow? = Enum.member?(news_resource.topics, topic)
+      Enum.map(news_resource.topics, fn topic ->
+        follow? = Enum.member?(followed_topics, topic)
         data(topic, follow?)
       end)
 
