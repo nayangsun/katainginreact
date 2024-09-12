@@ -12,6 +12,15 @@ defmodule Katainginreact.NewsResources do
   alias Katainginreact.NewsResources.NewsResource
   alias Katainginreact.Topics.Topic
 
+  def list_news_resources_by_topic_id(topic_id) do
+    Repo.all(
+      from nr in NewsResource,
+        join: t in assoc(nr, :topics),
+        where: t.id == ^topic_id,
+        preload: [:topics]
+    )
+  end
+
   def create_news_resource(attrs) do
     %NewsResource{}
     |> NewsResource.changeset(attrs)

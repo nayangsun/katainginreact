@@ -10,6 +10,15 @@ defmodule Katainginreact.Topics do
 
   def list_topics(), do: Repo.all(Topic)
 
+  def list_topics_by_user_id(user_id) do
+    Repo.all(
+      from topic in Topic,
+        join: user in assoc(topic, :users),
+        where: user.id == ^user_id,
+        select: topic
+    )
+  end
+
   def get_topic!(id), do: Repo.get!(Topic, id)
 
   def create_topic(attrs) do

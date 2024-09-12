@@ -45,6 +45,8 @@ defmodule KatainginreactWeb.Router do
     post "/users/topic/unfollow", UserController, :unfollow
 
     get "/topics", TopicController, :index
+
+    get "/news_resources/:topic_id", NewsResourceController, :index
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

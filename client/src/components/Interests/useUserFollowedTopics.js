@@ -8,11 +8,11 @@ function useUserFollowedTopics() {
     queries: [
       {
         queryKey: [QUERY_KEY.topic],
-        queryFn: () => fetchJson("/api/topics", { credentials: "include" }),
+        queryFn: () => fetchJson("/api/topics"),
       },
       {
         queryKey: [QUERY_KEY.user],
-        queryFn: () => fetchJson("/api/me", { credentials: "include" }),
+        queryFn: () => fetchJson("/api/me"),
       },
     ],
     combine: (results) => {
