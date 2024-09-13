@@ -1,7 +1,7 @@
 <h1 align="center">Kata-ing In React</h1>
 <br />
 <div align="center">
-  <img height="500" src="art/readme_header.png" alt="Kata-ing In React Logo" />
+  <img height="500" src="docs/images/readme_header.png" alt="Kata-ing In React Logo" />
 </div>
 <br />
 <div align="center">
@@ -21,6 +21,13 @@ Kataing In React는 React와 그리고 React-Query를 이용하여 Frontend, 그
 추가로 우선 React와 Phoenix로 구현한 다음 LiveView로 구현해보려고 해요.
 
 앱은 현재 개발 중이에요. 배포는 하지 않아요.
+
+## Screenshots
+
+![Screenshot showing For You screen, Interests screen and Topic detail screen](docs/images/screenshots.png "Screenshot showing For You screen, Interests screen and Topic detail screen")
+
+이 스크린샷은 Now in Android 애플리케이션에서 확인할 수 있어요.
+Kata-ing in React는 스크린에 최대한 가깝게 구현해보려고 해요.
 
 ## Design
 
