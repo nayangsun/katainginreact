@@ -22,13 +22,6 @@ Kataing In React는 React와 그리고 React-Query를 이용하여 Frontend, 그
 
 앱은 현재 개발 중이에요. 배포는 하지 않아요.
 
-## Screenshots
-
-![Screenshot showing For You screen, Interests screen and Topic detail screen](docs/images/screenshots.png "Screenshot showing For You screen, Interests screen and Topic detail screen")
-
-이 스크린샷은 Now in Android 애플리케이션에서 확인할 수 있어요.
-Kata-ing in React는 스크린에 최대한 가깝게 구현해보려고 해요.
-
 ## Design
 
 client and a [open API](https://github.com/OAI/OpenAPI-Specification) server with a relational database.
@@ -41,6 +34,19 @@ client and a [open API](https://github.com/OAI/OpenAPI-Specification) server wit
 
 클라이언트는 React와 사용하여 빌드된 Web Application이에요. 서버와는 JSON API를 통해 통신하고, React-Query를 사용하여 상태를 관리하고 있어요. 
 [nowinandroid](https://github.com/android/nowinandroid)을 참고하여 구현하고 있어서 UI는 모바일에 최적화되어 있어요.
+
+## Screenshots
+
+![Screenshot showing For You screen, Interests screen and Topic detail screen](docs/images/screenshots.png "Screenshot showing For You screen, Interests screen and Topic detail screen")
+
+<div align="center">
+  <strong>
+    이 스크린샷은 Now in Android 애플리케이션에서 확인할 수 있어요.
+  </strong>
+</div>
+<br />
+
+Kata-ing in React는 위의 스크린에 최대한 가깝게 구현해보려고 해요.
 
 ## Getting Started 🚀
 
